@@ -1,0 +1,2405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Netflix">
+<meta name="theme-color" content="#000000">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAcKSURBVHhe7d0vd11VFATwJC/Je+FPgRYkDofD4ZB1dTgcDonjE+BwdUgcDofDIXE4HJ/jsWaVLlb30Owmue+emXNH/MwkL9nnMW0O7T2nZ2dnZ8eIiVAQ4YyCCGcURDijIMIZBRHOKIhwRkGEMwoinFEQ4YyCCGcURDijIMIZBRHOKIhwRkGEMwoinFEQ4YyCCGcURDijIMIZBRHOKIhwRkGEMwoinFEQ4YyCCGcURDijIMIZBRHOKIhwRkGEMwoinFEQ4YwCCZ9eXB6/vXpriEfn5zSPiqe7a5p3LXUWURRI+HJ3OP598+EQP1y/S/OowGx13rXUWURRIGFkoeGL3TXNpCCFblEgYXSh/zg8ltx6pNAtCiSMLjQ8F9x6pNAtCiQoFBqe7fY020gpdIsCCSqFxtbjo/MLmm+UFLpFgQSVQsNP149ovlFS6BYFEpQKDZinzjhCCt2iQIJaof88PJHYeqTQLQokqBUaft6/R3OuLYVuUSBBsdDw1eXYrUcK3aJAgmqh/7p5cvz4fEfzriWFblEgQbXQMHLrkUK3KJCgXGj45vKGZl5DCt2iQIJ6obH1+GTA1iOFblEgQb3Q8Mv+/eP+bN0HmFLoFgUSHAoNaz/4nkK3KJDgUmhsPXC6ps5/Kil0iwIJLoWGX1fceqTQLQokOBUavrt6m9ZwCil0iwIJboWGz1bYeqTQLQokOBb6t8MHJ996pNAtCiQ4Fhq+v3qH1rKkFLpFgQTXQsPnF1e0nqWk0C0KJDgX+vfD45NtPVLoFgUSnAsNKF5d0xJS6BYFEtwLDae4rCaFblEgYYZCn+KymhS6RYGEGQoNS289UugWBRJmKTQseVlNCt2iQMJMhV7yspoUukWBhJkKDT8udFlNCt2iQMJshQasqa7zrlLoFgUSZiz0EpfVpNAtCiTMWGh46D15KXSLAgmzFhoecllNCt2iQMLMhX7IZTUpdIsCCTMXGu57WU0K3aJAwuyFhq/vcVlNCt2iQMIWCn2fy2pS6BYFErZQaMBlNXXtt0mhWxRI2Eqh4S6X1aTQLQokbKnQd7msJoVuUSBhS4WGN72sJoVuUSBha4WGN9l6pNAtCiRssdDQXVaTQrcokLDVQneX1aTQLQokjCw0Loup2ZpuuycvhW5RIGFkofGcBf5quuZret1lNSl0iwIJowsN+OO0+rG1vO6ymhS6RYGE0YXGDHjMs35sTf93T14K3aJAgkKhAQ/k14+vqV5Wk0K3KJCgUmgcmcLRqfo5a6mX1aTQLQokqBR69CyAEr+cJYVuUSBhZIlqoeH5wCLB03+3Hil0iwIJaoXG1gM//uvnruXlZTUpdIsCCWqFBvwuWT93TfgpkUK3KJCgWGgYWSgY+VOivheiKJCgWmj8icPIUo1U3wtRFEhQLTTgr6Xra7agvg+iKJCgXGgY/QDTCPU9EEWBBPVC4zkLPOpZXzuz+h6IokCCeqEBD+PX186srl8UBRIcCg14drm+flZ17aIokOBSaGw9cMC1fo0Z1bWLokCCS6EBVxCMfHZ6LXXdoiiQ4FRowInt+nVmU9csigIJboUGXOtVv9ZM6npFUSDBsdC4eHHmrUddrygKJDgWGnBFbv16s6hrFUWBBNdCw+gT46dS1ymKAgnOhcbrZ9x61HWKokCCc6FHz38qdY2iKJAwshBLFBpGnxhfWl2fKAokzFDo0SfGl1bXJ4oCCTMUGp7t9vT1XdW1iaJAwiyFhtEnxpdS1yWKAgkzFXr0ifGl1HWJokDCTIUGXOlVv4+buiZRFEiYrdAw+sT4Q9X1iKJAwoyFxolxXJNbv5+Luh5RFEiYsdDgfGK8rkUUBRJmLTS4nhiv6xBFgYSZC+16YryuQxQFEmYuNDieGK9rEEWBhNkLDW4nxuv8oiiQsIVCu50Yr/OLokDCFgoNTifG6+yiKJCwlUKDy4nxOrcoCiRsqdDgcGK8ziyKAglbK7TDifE6sygKJGyt0DD6H/rs1HlFUSBhi4UG5RPjdVZRFEjYaqHxvVWPbdVZRVEgYauFhpFrv02dUxQFEkb+Rx1daFA8MV5nFEWBhK0XWvHYVp1RFAUStl5oUDsxXucTRYGEFPoFpRPjdTZRFEhIoV9Q+oc+62yiKJCQQv9H5cR4nUsUBRJS6FcpnBivM4miQEIK/So8Oz36xHidSRQFElJoNvrEeJ1HFAUS8OA7nhMeAf8jVudRgV/odd611FlEURDhjIIIZxREOKMgwhkFEc4oiHBGQYQzCiKcURDhjIIIZxREOKMgwhkFEc4oiHBGQYQzCiKcURDhjIIIZxREOKMgwhkFEc4oiHBGQYQzCiKcURDhjIIIZxREOKMgwhkFEc4oiHBGQYQzCiKcURDhjIIIZxREOKMgwhkFEc4oiHBGQYQzCiJs/QPs0KKUZxA/HwAAAABJRU5ErkJggg==">
+<title>Netflix — Demo</title>
+<style>
+  :root {
+    --red: #e50914;
+    --bg: #000;
+    --panel: #181818;
+    --text: #fff;
+    --muted: #b3b3b3;
+    --pad: 4%;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+  }
+  body.no-scroll { overflow: hidden; }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+  img { display: block; }
+  ::-webkit-scrollbar { width: 10px; height: 8px; }
+  ::-webkit-scrollbar-thumb { background: #333; border-radius: 6px; }
+  ::-webkit-scrollbar-track { background: #000; }
+
+  /* ---------- Splash ---------- */
+  #splash {
+    position: fixed; inset: 0; z-index: 999;
+    background: #000; display: flex; align-items: center; justify-content: center;
+    transition: opacity .6s ease;
+  }
+  #splash.hide { opacity: 0; pointer-events: none; }
+  #splash .logo {
+    color: var(--red); font-size: clamp(48px, 10vw, 120px); font-weight: 800;
+    letter-spacing: .5px; animation: taDum 1.1s cubic-bezier(.2,.8,.2,1) both;
+    text-shadow: 0 0 40px rgba(229,9,20,.45);
+  }
+  @keyframes taDum {
+    0% { transform: scale(.6); opacity: 0; filter: blur(8px); }
+    55% { transform: scale(1.06); opacity: 1; filter: blur(0); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  /* ---------- Profile gate: "Who's watching?" ---------- */
+  #gate {
+    position: fixed; inset: 0; z-index: 900; background: #000;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    opacity: 0; visibility: hidden; transition: opacity .45s ease, visibility .45s;
+    padding: 24px;
+  }
+  #gate.show { opacity: 1; visibility: visible; }
+  #gate h1 {
+    color: #fff; font-weight: 400; letter-spacing: .5px;
+    font-size: clamp(26px, 4.5vw, 54px);
+    margin: 0 0 clamp(26px, 4.5vh, 52px);
+    animation: gateIn .6s .15s cubic-bezier(.2,.8,.2,1) both;
+  }
+  @keyframes gateIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  .gate-row {
+    display: flex; gap: clamp(18px, 3.5vw, 44px);
+    flex-wrap: wrap; justify-content: center;
+    animation: gateIn .6s .3s cubic-bezier(.2,.8,.2,1) both;
+  }
+  .gate-p { text-align: center; cursor: pointer; }
+  .gate-av {
+    display: grid; place-items: center;
+    width: clamp(104px, 16vw, 190px); aspect-ratio: 1;
+    border-radius: 6px; border: 3px solid transparent;
+    font-size: clamp(46px, 7vw, 84px); line-height: 1;
+    box-shadow: 0 12px 36px rgba(0,0,0,.65);
+    transition: transform .22s cubic-bezier(.2,.8,.2,1), border-color .22s;
+  }
+  .gate-p:hover .gate-av, .gate-p:focus-visible .gate-av {
+    transform: translateY(-7px) scale(1.04); border-color: #fff;
+  }
+  .gate-name {
+    display: block; margin-top: 14px;
+    color: #7a7a7a; font-size: clamp(15px, 1.6vw, 21px); font-weight: 500;
+    transition: color .2s;
+  }
+  .gate-p:hover .gate-name { color: #fff; }
+  .gate-count { display: block; margin-top: 5px; color: #565656; font-size: 12.5px; }
+  .gate-p.current .gate-av { border-color: #fff; }
+  .gate-p.current .gate-name { color: #fff; }
+  .gate-p.current .gate-count { color: var(--red); }
+  .gate-foot {
+    margin-top: clamp(30px, 5.5vh, 60px); display: flex; gap: 14px;
+    flex-wrap: wrap; justify-content: center;
+    animation: gateIn .6s .45s cubic-bezier(.2,.8,.2,1) both;
+  }
+  .gate-foot button {
+    color: #808080; border: 1px solid #808080; background: none;
+    padding: 10px 30px; font-size: 14px; letter-spacing: 1.6px; text-transform: uppercase;
+    transition: color .2s, border-color .2s;
+  }
+  .gate-foot button:hover { color: #fff; border-color: #fff; }
+  body.gate-open { overflow: hidden; }
+
+  /* gate: add-profile tile + edit mode */
+  .gate-av { position: relative; }
+  .gate-add .gate-av {
+    background: none !important; border: 3px dashed #4a4a4a; color: #777;
+    font-size: clamp(34px, 5vw, 60px); box-shadow: none;
+  }
+  .gate-add:hover .gate-av { border-color: #fff; color: #fff; }
+  .gate-row.editing .gate-p:not(.gate-add) .gate-av::after {
+    content: "✎"; position: absolute; inset: 0; border-radius: 4px;
+    background: rgba(0,0,0,.55); display: grid; place-items: center;
+    font-size: clamp(28px, 4.5vw, 52px); color: #fff;
+  }
+
+  /* ---------- Profile create/edit modal ---------- */
+  .pm-modal { width: min(460px, 94vw); padding: 34px 30px 30px; }
+  .pm-modal h2 { font-size: 24px; margin-bottom: 18px; }
+  .pm-avatar {
+    width: 110px; aspect-ratio: 1; border-radius: 6px; margin: 0 auto 4px;
+    display: grid; place-items: center; font-size: 54px; line-height: 1;
+    box-shadow: 0 10px 28px rgba(0,0,0,.55);
+  }
+  .pm-modal label { display: block; font-size: 13px; color: #999; margin: 14px 0 6px; }
+  .pm-modal input {
+    width: 100%; background: #232323; border: 1px solid #444; color: #fff;
+    padding: 11px 13px; border-radius: 4px; font-size: 16px; font-family: inherit;
+  }
+  .pm-modal input:focus { outline: none; border-color: #aaa; }
+  .pm-emos { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 14px; }
+  .pm-emo {
+    aspect-ratio: 1; border-radius: 6px; background: #232323; border: 2px solid transparent;
+    font-size: 23px; display: grid; place-items: center; transition: border-color .15s, transform .15s;
+  }
+  .pm-emo:hover { transform: scale(1.08); }
+  .pm-emo.sel { border-color: var(--red); background: #2e2e2e; }
+  .pm-ops { display: flex; gap: 10px; margin-top: 22px; }
+  .pm-ops .btn { flex: 1; text-align: center; }
+  .pm-del.armed { background: #b20710 !important; border-color: #b20710 !important; }
+  .pm-modal .err { color: #ff6b6b; font-size: 13.5px; margin-top: 12px; display: none; }
+  .pm-modal .err.show { display: block; }
+
+  /* ---------- Header ---------- */
+  header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; gap: 28px;
+    padding: 0 var(--pad); height: 68px;
+    background: linear-gradient(to bottom, rgba(0,0,0,.85), rgba(0,0,0,0));
+    transition: background .3s;
+  }
+  header.scrolled { background: #000; }
+  .brand {
+    color: var(--red); font-size: 26px; font-weight: 800; letter-spacing: -.5px;
+    user-select: none; white-space: nowrap; cursor: pointer; transition: opacity .2s;
+  }
+  .brand:hover { opacity: .8; }
+  nav.tabs { display: flex; gap: 18px; flex: 1; overflow-x: auto; scrollbar-width: none; }
+  nav.tabs::-webkit-scrollbar { display: none; }
+  nav.tabs button {
+    color: #e5e5e5; font-size: 14px; padding: 6px 2px; white-space: nowrap;
+    opacity: .85; transition: opacity .2s, color .2s;
+  }
+  nav.tabs button:hover { opacity: 1; }
+  nav.tabs button.active { color: #fff; font-weight: 700; opacity: 1; }
+  .head-right { display: flex; align-items: center; gap: 18px; }
+  .search-box { display: flex; align-items: center; position: relative; }
+  .search-box input {
+    width: 0; opacity: 0; padding: 0; border: 1px solid transparent;
+    background: rgba(0,0,0,.75); color: #fff; font-size: 14px; outline: none;
+    transition: width .3s, opacity .3s, padding .3s;
+  }
+  .search-box.open input {
+    width: 230px; opacity: 1; padding: 8px 34px 8px 12px; border-color: rgba(255,255,255,.6);
+  }
+  .search-box .s-icon { font-size: 18px; padding: 4px; }
+  .search-box .s-clear {
+    position: absolute; right: 6px; font-size: 14px; color: #bbb; display: none;
+  }
+  .search-box.open .s-clear { display: block; }
+  .avatar {
+    width: 34px; height: 34px; border-radius: 5px; font-size: 17px;
+    display: grid; place-items: center; background: linear-gradient(135deg,#0071eb,#00a8e8);
+    transition: transform .2s;
+  }
+  .avatar:hover { transform: scale(1.06); }
+  .profile-menu {
+    position: absolute; top: 60px; right: var(--pad); width: 210px;
+    background: rgba(20,20,20,.97); border: 1px solid #333; border-radius: 4px;
+    padding: 10px 0; display: none; font-size: 14px; z-index: 120;
+  }
+  .profile-menu.show { display: block; }
+  .profile-menu a { display: flex; align-items: center; gap: 8px; padding: 9px 16px; color: #ddd; text-decoration: none; cursor: pointer; }
+  .profile-menu a:hover { text-decoration: underline; }
+  .profile-menu .pm-label { padding: 8px 16px 4px; font-size: 10.5px; text-transform: uppercase; letter-spacing: .8px; color: #777; }
+  .profile-menu .pm-active { display: none; margin-left: auto; color: var(--red); font-size: 10px; font-weight: 800; letter-spacing: .5px; }
+  .profile-menu .pm-active.on { display: inline; }
+  .profile-menu .sep { height: 1px; background: #333; margin: 8px 0; }
+  .mode-chip {
+    display: inline-block; font-size: 10px; background: var(--red); color: #fff;
+    padding: 1px 6px; border-radius: 3px; margin-left: 6px; vertical-align: middle;
+  }
+  .mode-chip.demo { background: #555; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative; min-height: 85vh; display: flex; align-items: flex-end;
+    padding: 0 var(--pad) 11vh;
+    background: linear-gradient(77deg, rgba(0,0,0,.85) 0%, rgba(0,0,0,.4) 55%, rgba(0,0,0,0) 100%),
+                var(--hero-c, #14213d);
+    background-size: cover; background-position: center;
+    transition: background .5s;
+  }
+  .hero::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 14vh;
+    background: linear-gradient(to top, #000, transparent); pointer-events: none;
+  }
+  .hero-art {
+    position: absolute; inset: 0; overflow: hidden; pointer-events: none;
+    display: grid; place-items: center;
+  }
+  .hero-art .big-emoji {
+    font-size: clamp(180px, 34vw, 460px); opacity: .18; filter: saturate(1.4);
+    transform: translateX(28%);
+    animation: heroFloat 9s ease-in-out infinite alternate;
+  }
+  @keyframes heroFloat { from { transform: translateX(28%) scale(1); } to { transform: translateX(24%) scale(1.06); } }
+  .hero-content { position: relative; z-index: 2; max-width: 620px; }
+  .hero-tag {
+    display: flex; align-items: center; gap: 10px; font-size: 15px; letter-spacing: 3px;
+    color: #ddd; margin-bottom: 14px; text-transform: uppercase;
+  }
+  .hero-tag .n { color: var(--red); font-weight: 800; font-size: 22px; letter-spacing: -1px; }
+  .hero h1 {
+    font-size: clamp(38px, 6vw, 76px); line-height: 1.02; font-weight: 800;
+    letter-spacing: -1px; margin-bottom: 18px; text-shadow: 0 3px 20px rgba(0,0,0,.6);
+  }
+  .hero-meta { display: flex; gap: 14px; align-items: center; font-size: 14px; color: #ddd; margin-bottom: 14px; flex-wrap: wrap; }
+  .match { color: #46d369; font-weight: 700; }
+  .badge-age { border: 1px solid rgba(255,255,255,.5); padding: 1px 7px; border-radius: 3px; }
+  .hero p { font-size: 17px; line-height: 1.5; color: #e5e5e5; margin-bottom: 24px; text-shadow: 0 2px 8px rgba(0,0,0,.7); }
+  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 700;
+    padding: 11px 26px; border-radius: 5px; transition: transform .15s, background .2s;
+  }
+  .btn:hover { transform: scale(1.04); }
+  .btn-play { background: #fff; color: #000; }
+  .btn-play:hover { background: rgba(255,255,255,.85); }
+  .btn-ghost { background: rgba(109,109,110,.7); color: #fff; }
+  .btn-ghost:hover { background: rgba(109,109,110,.5); }
+  .btn-sm { font-size: 14px; padding: 8px 18px; }
+
+  /* ---------- Rows ---------- */
+  main { position: relative; z-index: 3; margin-top: -8vh; padding-bottom: 60px; }
+  .row { position: relative; margin-bottom: 3.2vw; }
+  .row-title {
+    font-size: clamp(15px, 1.4vw, 22px); font-weight: 700; color: #e5e5e5;
+    margin: 0 var(--pad) 10px; display: flex; align-items: center; gap: 8px;
+  }
+  .row-title .explore { font-size: 12px; color: #54b9c5; opacity: 0; transform: translateX(-6px); transition: .25s; }
+  .row:hover .row-title .explore { opacity: 1; transform: translateX(0); }
+  .row-track {
+    display: flex; gap: 8px; overflow-x: auto; overflow-y: hidden;
+    padding: 26px var(--pad) 30px; scroll-behavior: smooth; scrollbar-width: none;
+  }
+  .row-track::-webkit-scrollbar { display: none; }
+  .row-arrow {
+    position: absolute; top: 26px; bottom: 30px; width: var(--pad); min-width: 44px;
+    background: rgba(0,0,0,.5); color: #fff; font-size: 28px; z-index: 5;
+    opacity: 0; transition: opacity .2s, background .2s; display: grid; place-items: center;
+  }
+  .row-arrow.left { left: 0; }
+  .row-arrow.right { right: 0; }
+  .row:hover .row-arrow { opacity: 1; }
+  .row-arrow:hover { background: rgba(0,0,0,.75); }
+
+  /* ---------- Card ---------- */
+  .card {
+    position: relative; flex: 0 0 var(--cw, 260px); aspect-ratio: 16/9;
+    border-radius: 4px; overflow: hidden; cursor: pointer; background: #222;
+    transition: transform .28s cubic-bezier(.2,.8,.2,1), box-shadow .28s;
+    transform-origin: center bottom; z-index: 1;
+  }
+  body.mode-tmdb .card { aspect-ratio: 2/3; }
+  .card:hover { transform: scale(1.13); z-index: 6; box-shadow: 0 12px 34px rgba(0,0,0,.8); }
+  .poster { position: absolute; inset: 0; background: linear-gradient(135deg, var(--c1), var(--c2)); }
+  .poster::before {
+    content: ""; position: absolute; inset: 0; z-index: 1;
+    background: radial-gradient(circle at 78% 18%, rgba(255,255,255,.28), transparent 45%),
+                radial-gradient(circle at 12% 88%, rgba(0,0,0,.4), transparent 55%);
+  }
+  .poster.has-img::before { display: none; }
+  .poster img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
+  .poster .p-emoji {
+    position: absolute; right: 8px; top: 4px; font-size: 54px; opacity: .35; z-index: 2;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,.4));
+  }
+  .poster .p-title {
+    position: absolute; left: 12px; bottom: 10px; right: 12px; z-index: 2;
+    font-size: 21px; font-weight: 800; line-height: 1.05; letter-spacing: -.5px;
+    text-shadow: 0 2px 10px rgba(0,0,0,.65); text-transform: uppercase;
+  }
+  .poster .p-top {
+    position: absolute; top: 8px; left: 10px; z-index: 2; font-size: 10px; font-weight: 700;
+    letter-spacing: 1.6px; color: rgba(255,255,255,.85); text-transform: uppercase;
+  }
+  .poster.has-img .p-emoji, .poster.has-img .p-title, .poster.has-img .p-top { display: none; }
+  .card-info {
+    position: absolute; inset: 0; opacity: 0; transition: opacity .25s; z-index: 3;
+    background: linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.35) 55%, transparent 100%);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 10px 12px 12px;
+  }
+  .card:hover .card-info, .card:focus-visible .card-info { opacity: 1; }
+  .card-info .ci-title { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+  .card-info .ci-meta { display: flex; gap: 8px; align-items: center; font-size: 11px; color: #ddd; margin-bottom: 8px; flex-wrap: wrap; }
+  .ci-ops { display: flex; gap: 7px; }
+  .circle-btn {
+    width: 30px; height: 30px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.65);
+    background: rgba(40,40,40,.65); font-size: 13px; display: grid; place-items: center;
+    transition: .15s;
+  }
+  .circle-btn:hover { background: #fff; color: #000; border-color: #fff; }
+  .circle-btn.solid { background: #fff; color: #000; border-color: #fff; }
+  .circle-btn.solid:hover { background: rgba(255,255,255,.8); }
+  .circle-btn.on { background: #fff; color: #000; }
+  .progress { position: absolute; left: 12px; right: 12px; bottom: 5px; height: 3px; background: rgba(255,255,255,.3); border-radius: 2px; z-index: 4; }
+  .progress i { display: block; height: 100%; background: var(--red); border-radius: 2px; }
+  .card.has-progress .card-info { justify-content: flex-start; padding-top: 40px; }
+
+  /* Top 10 card */
+  .rank-card { flex: 0 0 auto; display: flex; align-items: flex-end; }
+  .rank-num {
+    font-size: clamp(90px, 11vw, 168px); font-weight: 800; line-height: .78;
+    color: #000; -webkit-text-stroke: 3px #555; letter-spacing: -8px;
+    transform: translateX(10px); z-index: 0; user-select: none;
+  }
+  .rank-card .card { --cw: 170px; aspect-ratio: 2/3; z-index: 1; transform-origin: left bottom; }
+  .rank-card .card:hover { transform: scale(1.09); }
+
+  /* ---------- Grid views ---------- */
+  .view { padding: 110px var(--pad) 40px; min-height: 80vh; }
+  .view h2 { font-size: clamp(20px, 2.4vw, 34px); margin-bottom: 22px; font-weight: 700; }
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 14px;
+  }
+  .grid .card { flex: none; width: 100%; }
+  .grid .card:hover { transform: scale(1.06); }
+  .empty { color: var(--muted); font-size: 16px; line-height: 1.6; max-width: 620px; }
+  .empty b { color: #fff; }
+  .load-more { text-align: center; margin-top: 28px; }
+
+  /* ---------- My List: side recommendations button ---------- */
+  .rec-rail {
+    position: fixed; right: 0; top: 50%; transform: translateY(-50%); z-index: 95;
+    display: flex; flex-direction: column; align-items: center; gap: 7px;
+    padding: 15px 9px; border-radius: 9px 0 0 9px; cursor: pointer;
+    background: linear-gradient(180deg, var(--red), #a8061a); color: #fff;
+    font-size: 10.5px; font-weight: 800; letter-spacing: .7px;
+    box-shadow: -6px 6px 22px rgba(0,0,0,.55); transition: background .2s;
+  }
+  .rec-rail .r-plus { font-size: 21px; line-height: 1; font-weight: 400; }
+  .rec-rail .r-label { writing-mode: vertical-rl; text-orientation: mixed; }
+  .rec-rail.on { background: linear-gradient(180deg, #fff, #d9d9d9); color: #111; }
+  @media (min-width: 761px) { .rec-rail:hover { transform: translateY(-50%) translateX(-3px); } }
+
+  .rec-panel {
+    background: #141414; border: 1px solid #262626; border-radius: 8px;
+    padding: 22px 24px; margin-bottom: 26px;
+  }
+  .rec-panel h3 { font-size: 21px; font-weight: 800; margin-bottom: 5px; }
+  .rec-panel .rec-why { color: var(--muted); font-size: 13.5px; margin-bottom: 18px; }
+  .rec-panel .grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+  .rec-skel { display: flex; gap: 8px; }
+  .rec-skel .skel-card { flex: 0 0 140px; aspect-ratio: 2/3; }
+
+  /* ---------- Genres tab ---------- */
+  .genre-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(175px, 1fr)); gap: 14px; }
+  .genre-tile {
+    position: relative; aspect-ratio: 16/9; border-radius: 6px; overflow: hidden;
+    display: flex; align-items: flex-end; padding: 14px; text-align: left;
+    background: linear-gradient(135deg, var(--c1), var(--c2));
+    transition: transform .2s, box-shadow .2s;
+  }
+  .genre-tile:hover { transform: scale(1.05); box-shadow: 0 10px 28px rgba(0,0,0,.65); z-index: 2; }
+  .genre-tile .g-emoji { position: absolute; right: 10px; top: 6px; font-size: 42px; opacity: .4; }
+  .genre-tile .g-name {
+    position: relative; z-index: 1; color: #fff; font-size: 18px; font-weight: 800;
+    text-shadow: 0 2px 10px rgba(0,0,0,.65); text-transform: uppercase; letter-spacing: -.3px;
+  }
+  .genre-back { margin-bottom: 14px; }
+
+  /* ---------- Skeletons ---------- */
+  .skel {
+    background: linear-gradient(90deg, #141414 25%, #232323 50%, #141414 75%);
+    background-size: 200% 100%; animation: shimmer 1.3s infinite; border-radius: 4px;
+  }
+  @keyframes shimmer { to { background-position: -200% 0; } }
+  .skel-title { width: 260px; height: 24px; margin: 0 var(--pad) 14px; }
+  .skel-row { display: flex; gap: 8px; padding: 0 var(--pad) 30px; }
+  .skel-card { flex: 0 0 var(--cw, 260px); aspect-ratio: 16/9; }
+  body.mode-tmdb .skel-card { aspect-ratio: 2/3; }
+  .skel-card:nth-child(n+7) { display: none; }
+
+  /* ---------- Modal ---------- */
+  #modalRoot { position: fixed; inset: 0; z-index: 950; display: none; }
+  #modalRoot.open { display: block; }
+  .modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.72); animation: fade .25s; }
+  @keyframes fade { from { opacity: 0; } }
+  .modal {
+    position: relative; width: min(920px, 94vw); max-height: 88vh; overflow-y: auto;
+    margin: 4vh auto; background: var(--panel); border-radius: 7px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.8); animation: rise .3s cubic-bezier(.2,.8,.2,1);
+  }
+  @keyframes rise { from { transform: translateY(30px); opacity: 0; } }
+  .m-close {
+    position: absolute; top: 14px; right: 14px; z-index: 5; width: 36px; height: 36px;
+    border-radius: 50%; background: #181818; font-size: 17px; display: grid; place-items: center;
+  }
+  .m-close:hover { background: #282828; }
+  .m-hero {
+    position: relative; aspect-ratio: 16/8; display: flex; align-items: flex-end;
+    padding: 30px 36px;
+    background: linear-gradient(to top, var(--panel), transparent 60%),
+                linear-gradient(135deg, var(--c1), var(--c2));
+    background-size: cover; background-position: center top;
+    overflow: hidden;
+  }
+  .m-hero .m-emoji { position: absolute; right: 4%; top: 8%; font-size: clamp(90px, 16vw, 190px); opacity: .3; }
+  .m-hero-content { position: relative; z-index: 2; }
+  .m-hero h2 { font-size: clamp(28px, 4.6vw, 52px); font-weight: 800; letter-spacing: -1px; text-shadow: 0 3px 16px rgba(0,0,0,.55); }
+  .m-ops { display: flex; gap: 10px; margin-top: 16px; align-items: center; flex-wrap: wrap; }
+  .m-body { padding: 8px 36px 40px; display: grid; grid-template-columns: 2fr 1fr; gap: 26px; }
+  .m-meta { display: flex; gap: 12px; align-items: center; font-size: 14px; color: #ddd; margin-bottom: 14px; flex-wrap: wrap; }
+  .hd { border: 1px solid rgba(255,255,255,.5); font-size: 10px; padding: 0 5px; border-radius: 2px; }
+  .m-desc { font-size: 15px; line-height: 1.6; color: #e5e5e5; }
+  .m-side p { font-size: 13px; line-height: 1.6; color: #777; margin-bottom: 12px; }
+  .m-side p span { color: #ddd; }
+  .m-section { grid-column: 1 / -1; }
+  .m-section h3 { font-size: 22px; margin-bottom: 16px; }
+  .season-sel {
+    background: #242424; color: #fff; border: 1px solid #555; padding: 7px 12px;
+    border-radius: 4px; font-size: 14px; margin-bottom: 16px;
+  }
+  .ep {
+    display: flex; gap: 16px; padding: 14px 10px; border-radius: 6px; align-items: center;
+    border-bottom: 1px solid #2a2a2a; transition: background .2s;
+  }
+  .ep:hover { background: #2a2a2a; }
+  .ep-num { width: 24px; text-align: center; color: #ddd; font-size: 16px; }
+  .ep-still {
+    width: 130px; aspect-ratio: 16/9; border-radius: 4px; flex: 0 0 auto; position: relative;
+    background: linear-gradient(135deg, var(--c1), var(--c2)); display: grid; place-items: center; font-size: 26px;
+    overflow: hidden;
+  }
+  .ep-still img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .ep-still .play-ic { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(0,0,0,.35); opacity: 0; transition: .2s; font-size: 22px; z-index: 2; }
+  .ep:hover .ep-still .play-ic { opacity: 1; }
+  .ep-info { flex: 1; min-width: 0; }
+  .ep-info .ep-top { display: flex; justify-content: space-between; gap: 10px; font-size: 15px; font-weight: 600; }
+  .ep-info .ep-top span:last-child { color: #ddd; font-weight: 400; font-size: 13px; white-space: nowrap; }
+  .ep-info p { font-size: 13px; color: #999; margin-top: 5px; line-height: 1.45; }
+  .similar-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+  .similar-grid .card { flex: none; width: 100%; }
+  .similar-grid .card:hover { transform: scale(1.05); }
+  .sim-card { background: #2f2f2f; border-radius: 4px; overflow: hidden; cursor: pointer; transition: .2s; }
+  .sim-card:hover { background: #3a3a3a; }
+  .sim-card .card { border-radius: 0; }
+  .sim-body { padding: 12px; }
+  .sim-body .sim-meta { display: flex; gap: 8px; font-size: 12px; color: #ddd; margin: 8px 0; align-items: center; flex-wrap: wrap; }
+  .sim-body p { font-size: 12.5px; color: #bbb; line-height: 1.5; }
+
+  /* ---------- Watch providers ---------- */
+  .providers { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
+  .prov {
+    display: flex; align-items: center; gap: 8px; background: #2a2a2a; padding: 7px 13px;
+    border-radius: 6px; font-size: 13px; color: #eee; border: 1px solid #3a3a3a;
+  }
+  .prov img { width: 22px; height: 22px; object-fit: contain; border-radius: 4px; background: #fff; }
+  .prov .prov-kind { color: #8e8e8e; font-size: 11px; }
+  .watch-note { font-size: 12px; color: #777; margin-top: 6px; line-height: 1.5; }
+  .watch-link { color: #54b9c5; text-decoration: none; font-size: 14px; font-weight: 600; }
+  .watch-link:hover { text-decoration: underline; }
+
+  /* ---------- Trailer ---------- */
+  .trailer-wrap { position: absolute; inset: 0; z-index: 4; background: #000; }
+  .trailer-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+  /* ---------- Free-to-watch players ---------- */
+  .stage { position: relative; aspect-ratio: 16/9; background: #000; overflow: hidden; }
+  .stage video, .stage iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: #000; }
+  .stage .stage-msg {
+    position: absolute; inset: 0; display: grid; place-items: center; gap: 8px;
+    color: #999; font-size: 14.5px; text-align: center; padding: 20px; align-content: center;
+  }
+  .stage .stage-msg a { color: #54b9c5; }
+  .f-head { padding: 20px 36px 0; }
+  .f-head h2 { font-size: clamp(24px, 3.6vw, 40px); font-weight: 800; letter-spacing: -.5px; }
+  .f-head .f-sub { color: #9e9e9e; font-size: 13.5px; margin-top: 6px; }
+  .card.free, body.mode-tmdb .card.free { aspect-ratio: 16/9; }
+  .badge-free {
+    background: var(--red); color: #fff; font-size: 10px; font-weight: 800;
+    padding: 2px 7px; border-radius: 3px; letter-spacing: .5px;
+  }
+
+  /* ---------- Setup modal ---------- */
+  .setup { padding: 36px 40px 40px; max-width: 620px; }
+  .setup h2 { font-size: 28px; margin-bottom: 8px; }
+  .setup .sub { color: var(--muted); font-size: 14.5px; line-height: 1.6; margin-bottom: 20px; }
+  .setup ol { margin: 0 0 22px 20px; color: #ddd; font-size: 14.5px; line-height: 1.9; }
+  .setup ol a { color: #54b9c5; }
+  .setup label { display: block; font-size: 13px; color: #999; margin: 14px 0 6px; }
+  .setup input, .setup select {
+    width: 100%; background: #242424; border: 1px solid #444; color: #fff;
+    padding: 11px 13px; border-radius: 5px; font-size: 15px; outline: none;
+  }
+  .setup input:focus, .setup select:focus { border-color: #aaa; }
+  .setup .row-btns { display: flex; gap: 12px; margin-top: 22px; flex-wrap: wrap; }
+  .setup .err { color: #ff6b6b; font-size: 13.5px; margin-top: 12px; display: none; }
+  .setup .err.show { display: block; }
+  .setup .fine { font-size: 12px; color: #666; margin-top: 18px; line-height: 1.6; }
+
+  /* ---------- Footer / toast ---------- */
+  footer { padding: 40px var(--pad) 60px; color: #757575; font-size: 13px; border-top: 1px solid #222; margin-top: 40px; }
+  footer .social { display: flex; gap: 18px; font-size: 20px; margin-bottom: 18px; color: #bbb; }
+  footer .links { display: flex; flex-wrap: wrap; gap: 14px 26px; margin-bottom: 18px; }
+  footer a { color: #757575; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  footer .upd-stamp { color: #5a5a5a; font-size: 12px; margin-top: 10px; }
+  #toast {
+    position: fixed; bottom: 30px; left: 50%; transform: translate(-50%, 20px); z-index: 300;
+    background: #fff; color: #000; font-weight: 600; font-size: 14px; padding: 12px 22px;
+    border-radius: 5px; opacity: 0; pointer-events: none; transition: .3s;
+    box-shadow: 0 8px 30px rgba(0,0,0,.5); max-width: 86vw; text-align: center;
+  }
+  #toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+  @media (max-width: 760px) {
+    header { gap: 12px; height: 56px; }
+    .brand { font-size: 20px; }
+    nav.tabs {
+      position: fixed; top: 56px; left: 0; right: 0; z-index: 99;
+      display: flex; gap: 4px; padding: 7px var(--pad) 9px;
+      background: #000; border-bottom: 1px solid #1a1a1a;
+      overflow-x: auto; -webkit-overflow-scrolling: touch;
+    }
+    nav.tabs button { font-size: 13px; padding: 5px 9px; border-radius: 20px; background: #1c1c1c; }
+    nav.tabs button.active { background: var(--red); }
+    .view { padding-top: 130px; }
+    .hero { padding-top: 52px; }
+    .search-box.open input { width: 150px; }
+    .card { --cw: 150px; }
+    body.mode-tmdb .card { --cw: 130px; }
+    .m-body { grid-template-columns: 1fr; padding: 8px 20px 32px; }
+    .m-hero { padding: 20px; }
+    .hero { min-height: 72vh; padding-bottom: 14vh; }
+    .ep-still { width: 96px; }
+    .rank-card .card { --cw: 120px; }
+    .row-arrow { display: none; }
+    .setup { padding: 28px 22px; }
+    .grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+    .rec-rail {
+      top: auto; bottom: 84px; transform: none; right: 12px;
+      flex-direction: row; gap: 8px; padding: 11px 16px; border-radius: 999px;
+      font-size: 12px; letter-spacing: .3px;
+    }
+    .rec-rail .r-label { writing-mode: horizontal-tb; }
+    .rec-rail .r-plus { font-size: 17px; }
+    .rec-panel { padding: 16px 14px; }
+    .rec-panel .grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+    .genre-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+    .genre-tile .g-name { font-size: 15px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="splash"><div class="logo">NETFLIX</div></div>
+
+<div id="gate" aria-label="Choose a profile">
+  <h1>Who's watching?</h1>
+  <div class="gate-row" id="gateRow"></div>
+  <div class="gate-foot">
+    <button data-act="gate-close">Start watching</button>
+    <button data-act="gate-manage" id="gateManage">Manage Profiles</button>
+  </div>
+</div>
+
+<header id="header">
+  <div class="brand">NETFLIX</div>
+  <nav class="tabs" id="tabs">
+    <button data-tab="home" class="active">Home</button>
+    <button data-tab="shows">TV Shows</button>
+    <button data-tab="movies">Movies</button>
+    <button data-tab="new">New &amp; Popular</button>
+    <button data-tab="genres">Genres</button>
+    <button data-tab="free">Free</button>
+    <button data-tab="mylist">My List</button>
+  </nav>
+  <div class="head-right">
+    <div class="search-box" id="searchBox">
+      <input type="text" id="searchInput" placeholder="Titles, genres, people" autocomplete="off">
+      <button class="s-clear" id="searchClear">✕</button>
+      <button class="s-icon" id="searchToggle">🔍</button>
+    </div>
+    <button class="avatar" id="avatarBtn">🙂</button>
+  </div>
+  <div class="profile-menu" id="profileMenu">
+    <a href="#" data-menu="settings">⚙️ App Settings</a>
+    <a href="#" data-menu="gate">👥 Who's watching?</a>
+    <div class="pm-label">Profiles — each has its own My List</div>
+    <div id="pmProfiles"></div>
+    <div class="sep"></div>
+    <a href="#" data-menu="manage">✏️ Manage Profiles</a>
+    <a href="#">Help Center</a>
+    <div class="sep"></div>
+    <a href="#" data-menu="signout">Sign out of Netflix</a>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<footer>
+  <div class="social">📘 📸 🐦 ▶️</div>
+  <div class="links">
+    <a href="#">Audio Description</a><a href="#">Help Center</a><a href="#">Gift Cards</a>
+    <a href="#">Media Center</a><a href="#">Investor Relations</a><a href="#">Jobs</a>
+    <a href="#">Terms of Use</a><a href="#">Privacy</a><a href="#">Legal Notices</a>
+    <a href="#">Cookie Preferences</a><a href="#">Corporate Information</a><a href="#">Contact Us</a>
+  </div>
+  <p id="updLine">Catalog data © TMDB. This product uses the TMDB API but is not endorsed or certified by TMDB.
+     Trailers and free titles are provided by YouTube; public domain classics stream from the Internet Archive.
+     Availability data via JustWatch. We do not host any video content.</p>
+  <p id="updStamp" class="upd-stamp"></p>
+</footer>
+
+<div id="modalRoot"></div>
+<div id="toast"></div>
+
+<script>
+/* ==================================================================
+   STORAGE & STATE
+================================================================== */
+const store = {
+  get(k, d) { try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch { return d; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
+};
+
+/* Calendar-day helpers — the catalog re-syncs itself whenever the date changes */
+const dayStamp = (d = new Date()) =>
+  `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+const dayOfYear = (d = new Date()) => Math.floor((d - new Date(d.getFullYear(), 0, 0)) / 86400000);
+
+const REGIONS = [
+  ["US","United States"],["GB","United Kingdom"],["CA","Canada"],["AU","Australia"],["NZ","New Zealand"],
+  ["IE","Ireland"],["DE","Germany"],["FR","France"],["ES","Spain"],["IT","Italy"],["NL","Netherlands"],
+  ["SE","Sweden"],["NO","Norway"],["DK","Denmark"],["FI","Finland"],["PL","Poland"],["PT","Portugal"],
+  ["CZ","Czechia"],["BR","Brazil"],["MX","Mexico"],["AR","Argentina"],["CL","Chile"],["CO","Colombia"],
+  ["IN","India"],["JP","Japan"],["KR","South Korea"],["SG","Singapore"],["HK","Hong Kong"],
+  ["TH","Thailand"],["PH","Philippines"],["ID","Indonesia"],["TR","Turkey"],["AE","UAE"],
+  ["SA","Saudi Arabia"],["ZA","South Africa"],["EG","Egypt"]
+];
+
+const DEFAULT_PROFILES = [
+  { name: "Cody", emoji: "🎬", bg: "linear-gradient(135deg,#3fa9f5,#0b63c5)" },
+  { name: "Kids", emoji: "🧸", bg: "linear-gradient(135deg,#ffd25e,#f2a93b)" }
+];
+const state = {
+  mode: store.get("nf_mode", "demo"),            // "demo" | "tmdb"
+  apiKey: store.get("nf_key", ""),
+  region: store.get("nf_region", "US"),
+  profile: store.get("nf_profile", "Cody"),       // each profile has its own My List
+  profiles: store.get("nf_profiles", null) || DEFAULT_PROFILES.map(p => ({ ...p })),
+  editProfiles: false,  // gate is in "Manage Profiles" mode
+  gateOpen: false,     // "Who's watching?" overlay is up
+  tab: "home",
+  query: "",
+  myList: [],
+  genres: { movie: {}, tv: {} },
+  pages: {},
+  genre: null,        // selected genre in the Genres tab
+  showRecs: true,     // recommendations spot visible in My List (the side + toggles it)
+  recs: null,         // cached recommendation cards (null = not fetched yet)
+  heroSeen: new Set()
+};
+
+/* keep stored profiles sane: unique non-empty names, and the active one must exist */
+(() => {
+  const seen = new Set();
+  state.profiles = (Array.isArray(state.profiles) ? state.profiles : []).filter(p => {
+    if (!p || typeof p.name !== "string" || !p.name.trim() || seen.has(p.name)) return false;
+    seen.add(p.name);
+    return true;
+  }).map(p => ({ name: p.name.trim(), emoji: p.emoji || "🙂", bg: p.bg || "linear-gradient(135deg,#555,#222)" }));
+  if (!state.profiles.length) state.profiles = DEFAULT_PROFILES.map(p => ({ ...p }));
+  if (!state.profiles.some(p => p.name === state.profile)) state.profile = state.profiles[0].name;
+})();
+
+const listKey = p => "nf_mylist::" + p;
+const saveList = () => store.set(listKey(state.profile), state.myList);
+const inList = key => state.myList.some(x => x.key === key);
+
+/* ==================================================================
+   DEMO CATALOG (fallback when no TMDB key)
+================================================================== */
+const RAW = [
+  ["Neon Horizon","series",2026,"TV-MA","2 Seasons",["Sci-Fi","Drama"],97,"A pilot awakens a derelict starship AI that claims the galaxy's last war never actually ended — and she's the only one who believes it.","🌌","#1a1a2e","#e94560",["Mara Vex","Dorian Kane","Yuki Sol"],true],
+  ["Crimson Tide Falls","film",2025,"R","2h 14m",["Action","Thriller"],96,"When a coastal city is taken hostage by a rogue submarine crew, a disgraced captain has one tide cycle to rewrite her legacy.","🌊","#0f2027","#e94560",["Rosa Delgado","Tom Hale","Ivan Petrov"],true],
+  ["The Last Bookstore","series",2024,"TV-14","3 Seasons",["Drama","Mystery"],93,"In a town where books are forbidden, a librarian smuggles stories by night — and one of them predicts the future.","📚","#3e2723","#ffb300",["Ada Finch","Leo Marsh","Sam Ortega"],false],
+  ["Midnight Diner Club","series",2026,"TV-MA","1 Season",["Comedy","Drama"],91,"Five strangers share the same 2 a.m. table, and slowly become the family none of them knew they needed.","🍜","#2b1055","#7597de",["June Park","Marcus Bell","Nina Osei"],true],
+  ["Velocity","film",2026,"PG-13","1h 58m",["Action","Adventure"],94,"A courier with a stolen prototype has 12 hours to cross three borders before the whole world is watching.","🏎️","#232526","#ff414c",["Kai Brooks","Elena Rostova","Dez Walker"],true],
+  ["Paper Crowns","series",2025,"TV-MA","2 Seasons",["Drama"],95,"Two rival heirs to a media empire wage a quiet war of leaks, love affairs, and front-page betrayals.","👑","#141e30","#c94b4b",["Vivienne Holt","Julian Cross","Rhea Sun"],false],
+  ["Static","film",2024,"R","1h 47m",["Thriller","Horror"],89,"A sound engineer records a frequency that shouldn't exist — and it starts answering her questions.","📡","#000000","#434343",["Nora Vane","Pete Loomis","Casey Hart"],false],
+  ["Orbit Kids","series",2026,"TV-PG","1 Season",["Family","Sci-Fi"],90,"A group of kids on a failing space station turn maintenance duty into the greatest adventure of their lives.","🛰️","#0b486b","#f56217",["Zoe Aduba","Ben Trask","Mika Lune"],true],
+  ["Golden Hour","film",2025,"PG-13","2h 03m",["Romance","Drama"],92,"A war photographer and a chef fall in love in the one city neither of them can stay in.","🌅","#42275a","#734b6d",["Amara Cole","Nico Ferrante","Lena Bright"],false],
+  ["Ironvale","series",2024,"TV-MA","3 Seasons",["Fantasy","Action"],96,"In a city powered by dead gods, a blacksmith discovers she can forge weapons from the gods' bones.","⚒️","#1f1c2c","#928dab",["Bryn Halden","Torvak Rime","Sera Voss"],true],
+  ["Laugh Track","series",2026,"TV-MA","2 Seasons",["Comedy"],88,"Behind every sitcom is a writer's room on the verge of collapse — this one is funnier than the show.","🎤","#232526","#5c6bc0",["Dani Roche","Greg Mulvaney","Pilar Nunez"],false],
+  ["Deep Blue Unknown","film",2025,"PG","1h 41m",["Documentary","Family"],91,"Descend into the ocean's midnight zone with the scientists mapping creatures no one has ever seen.","🐋","#000428","#004e92",["Narrated by Iris Kwan"],false],
+  ["Glass Harbor","series",2025,"TV-MA","1 Season",["Mystery","Thriller"],94,"A detective returns to her fishing hometown where everyone remembers the night she left — except her.","⚓","#134e5e","#71b280",["Rae Morrow","Chief Dunn","Otis Vega"],true],
+  ["Rust & Gold","film",2023,"R","2h 21m",["Western","Action"],87,"A retired outlaw pulls one last job when the railroad comes for the only land she's ever owned.","🌵","#3c1053","#ad5389",["Calista Rye","Wade Boone","Elm Foster"],false],
+  ["Pixel Hearts","series",2026,"TV-14","1 Season",["Comedy","Romance"],90,"Two rival game devs keep accidentally falling in love inside the MMO they're building together.","🎮","#0f0c29","#302b63",["Mina Cho","Theo Brandt","Samir Rao"],true],
+  ["Night Shift Nurses","series",2024,"TV-MA","4 Seasons",["Drama","Medical"],92,"The 11 p.m.–7 a.m. crew at Metro General see everything the daylight hides.","💉","#41295a","#2F0743",["Dr. Ayla Reyes","Nurse Kim Okafor","Intern Josh Lee"],false],
+  ["The Cartographer","film",2025,"PG-13","1h 55m",["Adventure","Drama"],89,"A mapmaker charts an island that redraws itself every night, with a passenger who's been there before.","🗺️","#1d2671","#c33764",["Edwin Slate","Mara Quinn","Old Hemlock"],false],
+  ["Zero Gravity","series",2023,"TV-14","2 Seasons",["Sci-Fi","Thriller"],93,"A luxury orbital hotel loses artificial gravity — and with it, the difference between guest and hostage.","🛸","#0f2027","#2c5364",["Captain Ruiz","Juno Park","Mr. Silk"],false],
+  ["Sunday Gravy","series",2025,"TV-PG","3 Seasons",["Family","Comedy"],87,"Three generations, one kitchen, and a recipe nobody's allowed to write down.","🍝","#f7971e","#ffd200",["Nonna Rosa","Frankie D","Cousin Vito"],false],
+  ["Blackout City","film",2026,"R","2h 07m",["Action","Thriller"],95,"When the grid goes dark for 48 hours, one bike courier becomes the city's only working nervous system.","🌃","#0f0c29","#302b63",["Nova Reyes","Detective Cho","Wren"],true],
+  ["Fablewood","series",2024,"TV-PG","2 Seasons",["Fantasy","Family"],91,"A girl finds a forest where discarded storybook characters go — and they're organizing.","🦊","#5f2c82","#49a09d",["Pip Ashford","The Wolf","Mr. Bound"],false],
+  ["The Understudy","film",2024,"R","1h 39m",["Thriller","Drama"],86,"An understudy gets the role of a lifetime when the lead vanishes — and stops wanting her back.","🎭","#141e30","#c94b4b",["Cleo Marsh","Director Kane","Ivy Lo"],false],
+  ["Salt Road","series",2025,"TV-MA","1 Season",["Crime","Drama"],94,"A smuggling route through the desert makes kings of no one and orphans of everyone.","🏜️","#42275a","#734b6d",["Farid Haddad","Lupita Vega","The Broker"],true],
+  ["Cloudline","film",2026,"PG-13","1h 52m",["Romance","Comedy"],88,"A fear-of-flying therapist and her most anxious patient book the same broken airline seat.","✈️","#83a4d4","#b6fbff",["Dr. Wren Hall","Miles Cooper","Captain Frost"],true],
+  ["Dungeon Nights","series",2026,"TV-14","1 Season",["Fantasy","Comedy"],92,"A group of level-1 adventurers stream their dungeon runs and accidentally become the prophecy.","🐉","#4b1248","#f0c27b",["Grizz","Sneaky","Bard Boi"],true],
+  ["Tidal","film",2023,"PG-13","1h 44m",["Drama"],85,"A lighthouse keeper's logbook becomes the town's most borrowed — and most feared — book.","🌊","#1a2a6c","#b21f1f",["Ora Finn","Deputy Marsh","Young Tom"],false],
+  ["Redline Academy","series",2025,"TV-MA","2 Seasons",["Action","Drama"],90,"At a boarding school for elite drivers, every hallway is a straightaway and every friend a rival.","🏁","#141e30","#e94560",["Taz Okonkwo","Viv LaSalle","Coach Briggs"],false],
+  ["The Quiet Hours","series",2024,"TV-MA","1 Season",["Mystery","Horror"],93,"The town's clocks stop at 3:03 a.m. — and that's when the second town wakes up.","🕯️","#000000","#434343",["Sister Agnes","Deputy Rourke","The Tenant"],false],
+  ["Mango Season","film",2025,"PG","1h 36m",["Family","Drama"],89,"A grandmother's last harvest teaches three city kids the taste of where they came from.","🥭","#f7971e","#ffd200",["Lila Nair","Grandma Asha","Rohan"],false],
+  ["Circuit Breaker","film",2026,"PG-13","2h 00m",["Sci-Fi","Action"],94,"A boxer with a prototype neural implant fights her way out of a corporate league that owns her reflexes.","🥊","#000428","#004e92",["Juno Vega","Coach Idris","The Champ"],true],
+  ["Room 4B","series",2023,"TV-MA","2 Seasons",["Comedy","Mystery"],86,"A hotel's haunted room keeps getting booked — by guests who check in knowing exactly what's inside.","🔑","#2c3e50","#fd746c",["Bellhop Max","Madame Z","Regular Ron"],false],
+  ["Wild Signal","series",2026,"TV-14","1 Season",["Adventure","Sci-Fi"],91,"A park ranger picks up a repeating signal from a canyon that was never surveyed.","📡","#1d2671","#c33764",["Ranger Cass","Dr. Ito","Echo"],true],
+  ["Last Call","film",2024,"R","1h 43m",["Comedy","Drama"],87,"On the final night of a dying bar, the regulars finally say everything they never did.","🥃","#3c1053","#ad5389",["Mick","Barb","Young Pete"],false],
+  ["Glasshouse","series",2026,"TV-MA","2 Seasons",["Thriller","Drama"],95,"A reality show sealed inside a transparent house — where the crew starts voting off the cameras.","📹","#16222a","#3a6073",["Host Vera","Contestant Ollie","Producer Jin"],true],
+  ["The Beekeeper's Daughter","film",2025,"PG-13","1h 57m",["Drama","Romance"],88,"She inherited the hives, the debt, and the town's oldest secret — in that order.","🐝","#4568dc","#b06ab3",["Etta Vale","Jonah Reed","Mrs. Pike"],false]
+];
+
+const EP_NAMES = ["Pilot","First Light","Cold Open","Static & Signal","The Long Way Down","Blood and Ink","Homecoming","Endgame","Aftermath","The Last Door"];
+
+const DEMO = RAW.map((r, i) => ({
+  key: "demo-" + i, mediaType: "demo", demo: true, id: i, tmdbId: null,
+  title: r[0], type: r[1], year: r[2], rating: r[3], duration: r[4],
+  genres: r[5], match: r[6], desc: r[7], emoji: r[8], c1: r[9], c2: r[10],
+  cast: r[11], flagship: r[12], poster: null, backdrop: null
+}));
+function DEMO_CARD(id) { return DEMO.find(d => d.id === id) || null; }
+const demoByKey = k => DEMO.find(d => d.key === k);
+
+/* My List is stored per profile: nf_mylist::<profile>.
+   Migrate the old shared key into the active profile the first time we run. */
+if (store.get("nf_mylist", null) !== null && store.get(listKey(state.profile), null) === null)
+  store.set(listKey(state.profile), store.get("nf_mylist", []));
+state.myList = store.get(listKey(state.profile), [])
+  .map(x => (typeof x === "number" ? DEMO_CARD(x) : x))
+  .filter(Boolean);
+
+const demoProgress = { "demo-0": 62, "demo-4": 28, "demo-9": 74, "demo-13": 45, "demo-20": 12, "demo-24": 88, "demo-31": 55 };
+
+const shuffle = (arr, seed) => {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor((Math.sin(seed * 9301 + i * 49297) * 233280) % (i + 1) + (i + 1)) % (i + 1);
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+};
+
+/* ==================================================================
+   CARD REGISTRY (key -> card object, for click routing)
+================================================================== */
+const registry = new Map();
+function reg(card) { registry.set(card.key, card); return card; }
+DEMO.forEach(reg);
+state.myList.forEach(reg);
+
+/* ==================================================================
+   FREE-TO-WATCH CATALOG
+   1) Curated full movies from official YouTube channels — every entry
+      below was verified via YouTube's oEmbed as embeddable and comes
+      from a legitimate distributor / public-domain channel.
+   2) Public domain feature films streamed from the Internet Archive.
+================================================================== */
+const strHash = s => { let h = 0; for (const ch of String(s)) h = (h * 31 + ch.charCodeAt(0)) >>> 0; return h; };
+const strColors = s => { const h = strHash(s) % 360; return [`hsl(${h},55%,24%)`, `hsl(${(h + 70) % 360},60%,40%)`]; };
+
+const YT_MOVIES = [
+  { v:"raz1Zn0BajQ", t:"Tourist Trap", y:1979, ch:"FilmRise Movies", g:["Horror","Thriller"], e:"🗿",
+    d:"A group of friends at a remote roadside attraction find themselves stalked by a masked killer with telekinetic powers." },
+  { v:"uPBWSFV0PGg", t:"Wicked Little Things", y:2006, ch:"FilmRise Movies", g:["Horror"], e:"⛏️",
+    d:"Two sisters and their mother move to the mountains, unknowingly near a mine where child workers died — and came back." },
+  { v:"14tCqV4nzYg", t:"Hurricane Bianca", y:2016, ch:"Wolfe Video", g:["Comedy"], e:"💄",
+    d:"A New York teacher is fired for being gay and goes undercover in a small Texas town to get his revenge." },
+  { v:"i2Np9u5tRhE", t:"The Outcasts", y:2017, ch:"Free Time Movies", g:["Comedy"], e:"🎒",
+    d:"Two best friends who've endured years of torment from the school's mean girls finally plot their revenge." },
+  { v:"e43rTlJtqvw", t:"Chicken Girls: The Movie", y:2018, ch:"Brat TV", g:["Family","Comedy"], e:"💃",
+    d:"Rhyme and TK's Paris trip is cut short when their friends' dance plans back home fall completely apart." },
+  { v:"ABjK0Qp6IRg", t:"Atlas Shrugged: Part I", y:2011, ch:"Samuel Goldwyn Films", g:["Drama","Sci-Fi"], e:"🚂",
+    d:"In a collapsing America, industrialist Dagny Taggart fights to save her railroad as the world's geniuses vanish." },
+  { v:"fznui6XRr2s", t:"Night of the Living Dead", y:1968, ch:"Aerik Von", g:["Horror"], e:"🧟",
+    d:"Strangers barricade themselves in a Pennsylvania farmhouse as the dead rise across the countryside." },
+  { v:"eS9XK_27ePA", t:"House on Haunted Hill", y:1959, ch:"Public Domain Cinema", g:["Horror","Mystery"], e:"🏚️",
+    d:"A millionaire offers five strangers a fortune to survive one night in a genuinely haunted house. Starring Vincent Price." },
+  { v:"tQ9HYSeKzyg", t:"The Lady Vanishes", y:1938, ch:"Retro Central", g:["Mystery","Thriller"], e:"🚂",
+    d:"A passenger discovers an elderly woman has vanished from her train — and nobody remembers she existed. Hitchcock." },
+  { v:"gDt2qK_ZNQk", t:"The Man Who Knew Too Much", y:1934, ch:"Cult Cinema Classics", g:["Thriller","Crime"], e:"🎿",
+    d:"A family holiday in the Alps turns deadly when they stumble onto an assassination plot. Hitchcock's thriller." },
+  { v:"MNRSxu22NxU", t:"Scarlet Street", y:1945, ch:"Cult Cinema Classics", g:["Film Noir","Drama"], e:"🎨",
+    d:"A timid cashier moonlighting as a painter is drawn into a deadly scheme by a femme fatale. Fritz Lang's noir." },
+  { v:"1OUaw_JDPVs", t:"The Big Combo", y:1955, ch:"Cult Cinema Classics", g:["Crime","Film Noir"], e:"🔫",
+    d:"A police lieutenant wages a personal war against a sadistic gangster the law can't touch." },
+  { v:"1t6kSQ562OQ", t:"And Then There Were None", y:1945, ch:"PizzaFlix", g:["Mystery","Thriller"], e:"🏝️",
+    d:"Ten strangers lured to a lonely island are accused of murder — and then picked off one by one." },
+  { v:"iwTDqHrJ4vc", t:"Things to Come", y:1936, ch:"Cult Cinema Classics", g:["Sci-Fi","Drama"], e:"💣",
+    d:"H.G. Wells' sweeping vision of a city rebuilt after decades of global war — and the world that follows." },
+  { v:"BTcrd2kKGRM", t:"The General", y:1926, ch:"4K Vintage Movie Archive", g:["Comedy","Action"], e:"🚂",
+    d:"Buster Keaton chases his stolen locomotive deep into enemy territory to win back his train — and the girl." },
+  { v:"_e-yIzO1oWA", t:"McLintock!", y:1963, ch:"WESTERNS - WILD WEST", g:["Western","Comedy"], e:"🤠",
+    d:"A cattle baron battles bandits, the town, and his own wife, who's just come back to demand a divorce. John Wayne." },
+  { v:"Q42BgGVAO0Q", t:"Santee", y:1973, ch:"WESTERN CLUB", g:["Western","Drama"], e:"🏜️",
+    d:"A weary bounty hunter takes a young outlaw under his wing — straight into a deadly trap. Starring Glenn Ford." },
+  { v:"nfj9aODpFqk", t:"The Shakiest Gun in the West", y:1968, ch:"Grjngo - Western Movies", g:["Western","Comedy"], e:"🦷",
+    d:"A Philadelphia dentist heads west and is mistaken for the fastest gun alive. Starring Don Knotts." },
+  { v:"feQIhzNpBLQ", t:"The Last Man on Earth", y:1964, ch:"VMI_TV", g:["Sci-Fi","Horror"], e:"🧛",
+    d:"A scientist may be the last human alive in a world of vampiric plague victims. Starring Vincent Price." },
+  { v:"LS35NhxIpUo", t:"Hangar 18", y:1980, ch:"FILMIX", g:["Sci-Fi","Thriller"], e:"🛸",
+    d:"A space shuttle collides with an alien object, and the government races to conceal what it has found." },
+  { v:"PUT3RIDqNkc", t:"The Wizard of Mars", y:1965, ch:"FILMIX", g:["Sci-Fi","Adventure"], e:"🔴",
+    d:"Astronauts stranded on Mars encounter the ghost of an ancient wizard and a civilization's dark secret." },
+  { v:"VbaSGbSf3zw", t:"Don't Open Till Christmas", y:1984, ch:"FILMIX", g:["Horror","Thriller"], e:"🎁",
+    d:"A slasher is picking off people dressed as Santa Claus across London during the Christmas season." },
+  { v:"khWDxx2Pk6c", t:"The Iron Horse", y:1924, ch:"The John Ford Film Archive", g:["Western","Drama"], e:"🛤️",
+    d:"John Ford's epic of the men who laid the transcontinental railroad across a hostile continent." },
+  { v:"Sq7yqwyewEE", t:"Fear and Desire", y:1953, ch:"4K Vintage Movie Archive", g:["Drama","War"], e:"🌲",
+    d:"Four soldiers stranded behind enemy lines in a nameless war confront fear, desire, and each other. Kubrick's debut." },
+  { v:"UOCSRcRI-uk", t:"My Favorite Brunette", y:1947, ch:"Public Domain Cinema", g:["Comedy","Crime"], e:"🕵️",
+    d:"A baby photographer mistakes two detectives for private eyes and stumbles into a real murder case. Bob Hope." },
+  { v:"HFwOadomNu0", t:"Blood on the Sun", y:1945, ch:"Public Domain Cinema", g:["Action","War"], e:"📰",
+    d:"A newspaper editor in pre-war Tokyo is targeted over a document that could spark a world war. James Cagney." },
+  { v:"mY7cbcDBorM", t:"The Strange Woman", y:1946, ch:"Retro Central", g:["Drama","Romance"], e:"🌊",
+    d:"A ruthless New England socialite manipulates every man in town — until one refuses to break. Hedy Lamarr." },
+  { v:"0ujMMYFdJ9A", t:"The Capture", y:1950, ch:"Cult Cinema Classics", g:["Western","Drama"], e:"🐎",
+    d:"An innocent man convicted of a crime he didn't commit escapes custody and heads for the Mexican border." }
+];
+
+const YT_CARDS = YT_MOVIES.map(m => {
+  const [c1, c2] = strColors(m.v);
+  return reg({
+    key: "yt-" + m.v, mediaType: "yt", ytId: m.v,
+    title: m.t, year: String(m.y), rating: "NR", duration: "",
+    match: null, genres: m.g, desc: m.d, emoji: m.e, c1, c2,
+    poster: `https://i.ytimg.com/vi/${m.v}/hqdefault.jpg`, backdrop: null,
+    channel: m.ch, cast: []
+  });
+});
+
+let pdCache = null;
+async function loadPDMovies() {
+  if (pdCache) return pdCache;
+  const today = dayStamp();
+  // The free list is cached for the current day so it stays stable, then
+  // rolls over to a fresh slice of the archive on every new calendar day.
+  const saved = store.get("nf_pd_day", "") === today ? store.get("nf_pd_list", null) : null;
+  if (Array.isArray(saved) && saved.length) { pdCache = saved.map(reg); return pdCache; }
+  try {
+    const q = 'collection:feature_films AND year:[1920 TO 1968] AND mediatype:movies AND format:MPEG4';
+    const page = (dayOfYear() % 3) + 1; // rotate through the top ~90 classics daily
+    const url = `https://archive.org/advancedsearch.php?q=${encodeURIComponent(q)}` +
+      `&fl%5B%5D=identifier&fl%5B%5D=title&fl%5B%5D=year&fl%5B%5D=description` +
+      `&sort%5B%5D=downloads+desc&rows=30&page=${page}&output=json`;
+    const j = await (await fetch(url, { cache: "no-store" })).json();
+    const BAD = /nudist|\bsex\b|concentration|snuff|rape|orgy|erotic|stewardess|trailer|excerpt/i;
+    pdCache = (j.response?.docs || [])
+      .filter(d => !BAD.test(d.title || "") && !String(d.identifier).includes("."))
+      .slice(0, 26)
+      .map(d => {
+        const raw = Array.isArray(d.description) ? d.description[0] : d.description;
+        const desc = String(raw || "").replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+        const [c1, c2] = strColors(d.identifier);
+        return reg({
+          key: "pd-" + d.identifier, mediaType: "pd", iaId: d.identifier,
+          title: String(d.title || "Untitled").replace(/\s+/g, " ").trim(),
+          year: d.year ? String(d.year).slice(0, 4) : "",
+          rating: "NR", duration: "", match: null,
+          genres: ["Classic"],
+          desc: desc.slice(0, 220) || "A public domain feature film, free to watch from the Internet Archive.",
+          emoji: "🎞️", c1, c2,
+          poster: `https://archive.org/services/img/${d.identifier}`, backdrop: null,
+          channel: "Internet Archive", cast: []
+        });
+      });
+    store.set("nf_pd_day", today);
+    store.set("nf_pd_list", pdCache);
+  } catch {
+    pdCache = pdCache || [];
+  }
+  return pdCache;
+}
+
+async function freeSearch(q) {
+  await loadPDMovies();
+  const s = q.toLowerCase();
+  return [...YT_CARDS, ...(pdCache || [])].filter(c =>
+    c.title.toLowerCase().includes(s) ||
+    (c.channel || "").toLowerCase().includes(s) ||
+    c.genres.some(g => g.toLowerCase().includes(s)) ||
+    c.desc.toLowerCase().includes(s)
+  );
+}
+
+async function freeRowsHTML() {
+  const pd = await loadPDMovies();
+  let html = "";
+  if (pd.length) html += rowHTML("🍿 Free Movies — Public Domain Classics", pd);
+  if (YT_CARDS.length) html += rowHTML("🎬 Free on YouTube — Full Movies", YT_CARDS);
+  return html;
+}
+
+async function freePage() {
+  const pd = await loadPDMovies();
+  return gridPage("Free to Watch", [...pd, ...YT_CARDS],
+    "Full-length movies you can watch right now — public domain classics from the Internet Archive and official free releases on YouTube.");
+}
+
+/* ==================================================================
+   TMDB API
+================================================================== */
+const memCache = new Map();
+async function api(path, params = {}, useCache = true) {
+  if (!state.apiKey) { const e = new Error("No API key"); e.code = "no-key"; throw e; }
+  const ck = path + "|" + JSON.stringify(params);
+  if (useCache && memCache.has(ck)) return memCache.get(ck);
+  const qs = new URLSearchParams({ api_key: state.apiKey, language: "en-US" });
+  for (const [k, v] of Object.entries(params)) qs.set(k, v);
+  let res;
+  try { res = await fetch(`https://api.themoviedb.org/3${path}?${qs}`, { cache: "no-cache" }); }
+  catch { const e = new Error("Network error"); e.code = "net"; throw e; }
+  if (res.status === 401) { const e = new Error("Invalid API key"); e.code = "auth"; throw e; }
+  if (!res.ok) { const e = new Error("TMDB error " + res.status); e.code = "http"; throw e; }
+  const data = await res.json();
+  if (useCache) memCache.set(ck, data);
+  return data;
+}
+
+async function loadGenres() {
+  const [m, t] = await Promise.all([api("/genre/movie/list"), api("/genre/tv/list")]);
+  m.genres.forEach(g => state.genres.movie[g.id] = g.name);
+  t.genres.forEach(g => state.genres.tv[g.id] = g.name);
+}
+
+const img = (path, size = "w500") =>
+  !path ? null : path.startsWith("http") ? path : `https://image.tmdb.org/t/p/${size}${path}`;
+const hashColors = id => {
+  const h = (id * 2654435761) % 360;
+  return [`hsl(${h},55%,24%)`, `hsl(${(h + 70) % 360},60%,40%)`];
+};
+const GENRE_EMOJI = {
+  28:"💥",12:"🧭",16:"🐾",35:"😂",80:"🔪",99:"🎞️",18:"🎭",10751:"👨‍👩‍👧",14:"🧙",
+  36:"🏛️",27:"👻",10402:"🎵",9648:"🕵️",10749:"💕",878:"🚀",53:"😱",10752:"🎖️",37:"🤠",10770:"📺"
+};
+
+function fromTMDB(m, forcedType) {
+  const mt = forcedType || m.media_type || (m.first_air_date ? "tv" : "movie");
+  const gids = m.genre_ids || [];
+  const names = gids.map(id => state.genres[mt]?.[id]).filter(Boolean);
+  const [c1, c2] = hashColors(m.id);
+  return reg({
+    key: "tmdb-" + m.id + "-" + mt, mediaType: mt, tmdbId: m.id,
+    title: m.title || m.name || "Untitled",
+    year: (m.release_date || m.first_air_date || "").slice(0, 4),
+    rating: "", duration: "",
+    match: typeof m.vote_average === "number" && m.vote_average > 0 ? Math.round(m.vote_average * 10) : null,
+    genres: names,
+    desc: m.overview || "No description available.",
+    emoji: GENRE_EMOJI[gids[0]] || (mt === "tv" ? "📺" : "🎬"),
+    c1, c2,
+    poster: m.poster_path || null,
+    backdrop: m.backdrop_path || null,
+    cast: []
+  });
+}
+
+/* ==================================================================
+   SHARED UI HELPERS
+================================================================== */
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+function toast(msg) {
+  const el = $("#toast");
+  el.textContent = msg;
+  el.classList.add("show");
+  clearTimeout(toast._t);
+  toast._t = setTimeout(() => el.classList.remove("show"), 2600);
+}
+
+function posterHTML(c) {
+  const p = img(c.poster, "w500");
+  const top = c.mediaType === "tv" ? "SERIES" : c.mediaType === "movie" ? "FILM"
+    : c.mediaType === "yt" ? "FREE · YOUTUBE" : c.mediaType === "pd" ? "FREE · PUBLIC DOMAIN"
+    : (c.type === "series" ? "NETFLIX SERIES" : "NETFLIX FILM");
+  return `
+    <div class="poster ${p ? "has-img" : ""}" style="--c1:${c.c1};--c2:${c.c2}">
+      <span class="p-top">${top}</span>
+      ${p ? `<img src="${p}" alt="" loading="lazy" onerror="this.remove()">` : ""}
+      <span class="p-emoji">${c.emoji}</span>
+      <span class="p-title">${esc(c.title)}</span>
+    </div>`;
+}
+
+function cardHTML(c, opts = {}) {
+  const prog = opts.progress ? demoProgress[c.key] : null;
+  const added = inList(c.key);
+  const isFree = c.mediaType === "yt" || c.mediaType === "pd";
+  const typeLabel = c.mediaType === "tv" ? "Series" : c.mediaType === "movie" ? "Film" : c.duration;
+  const metaBits = [
+    c.match != null ? `<span class="match">${c.match}% Match</span>` : "",
+    isFree ? `<span class="badge-free">FREE</span>` : "",
+    c.year ? `<span>${c.year}</span>` : "",
+    `<span class="badge-age">${esc(c.rating || typeLabel || "NR")}</span>`,
+    c.duration && c.mediaType === "demo" ? `<span>${esc(c.duration)}</span>` : "",
+    c.channel ? `<span>${esc(c.channel)}</span>` : "",
+    c.mediaType === "pd" ? `<span>Internet Archive</span>` : "",
+    `<span class="hd">HD</span>`
+  ].join("");
+  return `
+    <div class="card ${isFree ? "free" : ""} ${prog ? "has-progress" : ""}" data-key="${c.key}" tabindex="0" role="button" aria-label="${esc(c.title)}">
+      ${posterHTML(c)}
+      ${prog ? `<div class="progress"><i style="width:${prog}%"></i></div>` : ""}
+      <div class="card-info">
+        <div class="ci-title">${esc(c.title)}</div>
+        <div class="ci-meta">${metaBits}</div>
+        <div class="ci-ops">
+          <button class="circle-btn solid" data-act="play" data-key="${c.key}" title="Play">▶</button>
+          <button class="circle-btn list-btn ${added ? "on" : ""}" data-act="list" data-key="${c.key}" title="My List">${added ? "✓" : "+"}</button>
+          <button class="circle-btn" data-act="info" data-key="${c.key}" title="More Info">ⓘ</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+function rowHTML(title, items, opts = {}) {
+  if (!items.length) return "";
+  const cards = items.map((c, i) =>
+    opts.rank
+      ? `<div class="rank-card"><span class="rank-num">${i + 1}</span>${cardHTML(c)}</div>`
+      : cardHTML(c, opts)
+  ).join("");
+  return `
+    <section class="row">
+      <h2 class="row-title">${esc(title)} <span class="explore">Explore All ›</span></h2>
+      <button class="row-arrow left" data-dir="-1">‹</button>
+      <div class="row-track">${cards}</div>
+      <button class="row-arrow right" data-dir="1">›</button>
+    </section>`;
+}
+
+function gridHTML(items) {
+  if (!items.length) return `<p class="empty">Nothing here yet — add titles from the home page to see them appear.</p>`;
+  return `<div class="grid">${items.map(c => cardHTML(c)).join("")}</div>`;
+}
+
+function gridPage(title, items, sub) {
+  return `<div class="view"><h2>${esc(title)}</h2>${sub ? `<p class="empty" style="margin:-10px 0 22px">${sub}</p>` : ""}${gridHTML(items)}</div>`;
+}
+
+/* ==================================================================
+   GENRES TAB
+================================================================== */
+const DEMO_GENRE_EMOJI = {
+  Action:"💥", Comedy:"😂", Drama:"🎭", Thriller:"😱", Horror:"👻", "Sci-Fi":"🚀",
+  Romance:"💕", Animation:"🐾", Documentary:"🎞️", Crime:"🔪", Fantasy:"🧙",
+  Adventure:"🧭", Family:"👨‍👩‍👧", Western:"🤠", Mystery:"🕵️", War:"🎖️",
+  History:"🏛️", Musical:"🎵", Holiday:"🎄"
+};
+const demoGenreNames = () => [...new Set(DEMO.flatMap(t => t.genres))].sort();
+
+function demoGenreTiles() {
+  return demoGenreNames().map(name => {
+    const [c1, c2] = strColors(name);
+    return { id: name, mt: "demo", name, c1, c2, emoji: DEMO_GENRE_EMOJI[name] || "🎬" };
+  });
+}
+
+function tmdbGenreTiles() {
+  const seen = new Map();
+  Object.entries(state.genres.movie).forEach(([id, name]) => seen.set(name, { id, mt: "movie", name }));
+  Object.entries(state.genres.tv).forEach(([id, name]) => {
+    if (!seen.has(name)) seen.set(name, { id, mt: "tv", name });
+  });
+  return [...seen.values()].map(g => {
+    const [c1, c2] = hashColors(+g.id);
+    return { ...g, c1, c2, emoji: GENRE_EMOJI[g.id] || (g.mt === "tv" ? "📺" : "🎬") };
+  });
+}
+
+function genreTilesHTML(tiles, sub) {
+  return `<div class="view"><h2>Genres</h2>
+    <p class="empty" style="margin:-10px 0 22px">${sub}</p>
+    <div class="genre-grid">${tiles.map(g => `
+      <button class="genre-tile" data-genre="${esc(g.id)}" data-gmt="${g.mt}" style="--c1:${g.c1};--c2:${g.c2}">
+        <span class="g-emoji">${g.emoji}</span>
+        <span class="g-name">${esc(g.name)}</span>
+      </button>`).join("")}
+    </div></div>`;
+}
+
+function genreResultsView(title, items, sub) {
+  return `<div class="view">
+    <button class="btn btn-ghost genre-back" data-act="genre-back">‹ All Genres</button>
+    <h2>${esc(title)}</h2>
+    ${sub ? `<p class="empty" style="margin:-10px 0 22px">${esc(sub)}</p>` : ""}
+    ${gridHTML(items)}</div>`;
+}
+
+/* ==================================================================
+   MY LIST (per-profile) + side recommendations
+================================================================== */
+function recPanelHTML() {
+  const recs = state.recs;
+  let inner;
+  if (!recs) {
+    inner = `<div class="rec-skel">${Array(6).fill('<div class="skel skel-card"></div>').join("")}</div>`;
+  } else if (!recs.length) {
+    inner = `<p class="empty">Save a few titles to My List first — then we'll line up more like them.</p>`;
+  } else {
+    inner = `<div class="grid">${recs.map(c => cardHTML(c)).join("")}</div>`;
+  }
+  return `<div class="rec-panel"><h3>More Like This</h3>
+    <p class="rec-why">Suggestions based on what's in ${esc(state.profile)}'s My List</p>${inner}</div>`;
+}
+
+function myListView() {
+  const n = state.myList.length;
+  const sub = n
+    ? `${n} title${n > 1 ? "s" : ""} saved for ${esc(state.profile)} — this list is stored on this profile and stays the same when you come back.`
+    : "Tap the + on any title to save it here. Each profile keeps its own list.";
+  const showPanel = n > 0 && state.showRecs;
+  const rail = n > 0 ? `
+    <button class="rec-rail ${state.showRecs ? "on" : ""}" data-act="recs" title="Recommendations based on your list">
+      <span class="r-plus">${state.showRecs ? "✕" : "+"}</span>
+      <span class="r-label">${state.showRecs ? "HIDE" : "MORE LIKE THIS"}</span>
+    </button>` : "";
+  return rail + `<div class="view"><h2>My List</h2>
+    <p class="empty" style="margin:-10px 0 22px">${sub}</p>
+    ${gridHTML(state.myList)}
+    ${showPanel ? recPanelHTML() : ""}</div>`;
+}
+
+/* The recommendations spot fills itself in after My List renders */
+function maybeFetchRecs(seq) {
+  if (!(state.showRecs && state.recs == null && state.myList.length)) return;
+  fetchRecs().then(() => {
+    if (seq === renderSeq && state.tab === "mylist" && !state.query) render();
+  }).catch(() => {});
+}
+
+/* Score picks from the list's genres (demo) or TMDB recommendations + genre discover */
+async function fetchRecs() {
+  if (state.recs) return state.recs;
+  const list = state.myList;
+  if (!list.length) { state.recs = []; return state.recs; }
+
+  if (!(state.mode === "tmdb" && state.apiKey)) {
+    const want = {};
+    list.forEach(c => (c.genres || []).forEach(g => want[g] = (want[g] || 0) + 1));
+    state.recs = DEMO
+      .filter(d => !inList(d.key))
+      .map(d => ({ d, s: d.genres.reduce((a, g) => a + (want[g] || 0), 0) }))
+      .filter(x => x.s > 0)
+      .sort((a, b) => b.s - a.s || (b.d.match || 0) - (a.d.match || 0))
+      .slice(0, 12).map(x => x.d);
+    return state.recs;
+  }
+
+  try {
+    const seeds = list.filter(c => c.tmdbId && (c.mediaType === "movie" || c.mediaType === "tv")).slice(0, 3);
+    let out = [];
+    if (seeds.length) {
+      const res = await Promise.allSettled(seeds.map(c =>
+        api(`/${c.mediaType}/${c.tmdbId}/recommendations`, { page: 1 })));
+      res.forEach(r => { if (r.status === "fulfilled") out.push(...(r.value.results || [])); });
+    }
+    if (out.length < 6) {
+      const nameToId = {};
+      Object.entries(state.genres.movie).forEach(([id, n]) => { if (!(n in nameToId)) nameToId[n] = +id; });
+      const gids = [...new Set(list.flatMap(c => c.genres || []).map(g => nameToId[g]).filter(Boolean))].slice(0, 2);
+      if (gids.length) {
+        const r = await api("/discover/movie", { with_genres: gids.join(","), sort_by: "popularity.desc" });
+        out.push(...(r.results || []));
+      }
+    }
+    const seen = new Set(list.map(c => c.key));
+    const recs = [];
+    for (const x of out) {
+      if (x.media_type === "person") continue;
+      const card = fromTMDB(x);
+      if (seen.has(card.key)) continue;
+      seen.add(card.key);
+      recs.push(card);
+      if (recs.length >= 12) break;
+    }
+    state.recs = recs;
+  } catch { state.recs = []; }
+  return state.recs;
+}
+
+function skeletonView() {
+  const row = `<section class="row"><div class="skel skel-title"></div><div class="skel-row">${
+    Array(6).fill('<div class="skel skel-card"></div>').join("")
+  }</div></section>`;
+  return `<div class="view" style="padding-top:90px">${row.repeat(4)}</div>`;
+}
+
+function errorView(e) {
+  const msg = e.code === "auth" ? "Your TMDB API key was rejected. Double-check it in Settings."
+    : e.code === "no-key" ? "No TMDB API key configured yet."
+    : e.code === "net" ? "Couldn't reach TMDB — check your internet connection."
+    : "Something went wrong while loading the catalog.";
+  return `<div class="view"><h2>Couldn't load the catalog</h2>
+    <p class="empty" style="margin-bottom:22px">${msg}</p>
+    <button class="btn btn-play" data-act="setup">⚙️ Open Settings</button></div>`;
+}
+
+function heroHTML(c, opts = {}) {
+  const bg = img(c.backdrop, "w1280");
+  const style = [
+    `--hero-c:${c.c1}`,
+    bg ? `background-image:linear-gradient(77deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.4) 55%,rgba(0,0,0,0) 100%),url('${bg}')` : ""
+  ].filter(Boolean).join(";");
+  const isTv = c.mediaType === "tv" || c.type === "series";
+  const playLabel = opts.demo ? "▶ Play" : "▶ Trailer";
+  const playAct = opts.demo ? "play" : "trailer-hero";
+  return `
+    <section class="hero" style="${style}">
+      ${bg ? "" : `<div class="hero-art"><span class="big-emoji">${c.emoji}</span></div>`}
+      <div class="hero-content">
+        <div class="hero-tag"><span class="n">N</span> ${isTv ? "SERIES" : "FILM"}</div>
+        <h1>${esc(c.title)}</h1>
+        <div class="hero-meta">
+          ${c.match != null ? `<span class="match">${c.match}% Match</span>` : ""}
+          ${c.year ? `<span>${c.year}</span>` : ""}
+          <span class="badge-age">${esc(c.rating || (isTv ? "TV" : "NR"))}</span>
+          ${c.duration ? `<span>${esc(c.duration)}</span>` : ""}
+          <span class="hd">HD</span>
+        </div>
+        <p>${esc(c.desc)}</p>
+        <div class="hero-btns">
+          <button class="btn btn-play" data-act="${playAct}" data-key="${c.key}">${playLabel}</button>
+          <button class="btn btn-ghost" data-act="info" data-key="${c.key}">ⓘ More Info</button>
+          <button class="btn btn-ghost list-btn" data-act="list" data-key="${c.key}">${inList(c.key) ? "✓ In My List" : "+ My List"}</button>
+        </div>
+      </div>
+    </section>`;
+}
+
+/* ==================================================================
+   DEMO VIEWS
+================================================================== */
+async function homeViewDemo() {
+  const d = dayOfYear(); // daily seed — demo rows reshuffle each day
+  const trending = shuffle(DEMO, d + 3).slice(0, 12);
+  const top10 = shuffle(DEMO, d + 7).slice(0, 10);
+  const originals = DEMO.filter(t => t.flagship);
+  const seed = demoByKey("demo-" + (d % DEMO.length));
+  const because = DEMO.filter(t => t.id !== seed.id && t.genres.some(g => seed.genres.includes(g)));
+  const newReleases = DEMO.filter(t => t.year >= 2025).sort((a, b) => b.year - a.year);
+  const genres = ["Action", "Drama", "Comedy", "Sci-Fi", "Thriller", "Romance"];
+  const continueItems = Object.keys(demoProgress).map(demoByKey).filter(Boolean);
+  const listItems = state.myList.filter(x => x.mediaType === "demo");
+
+  let html = heroHTML(demoByKey("demo-" + (d % 12)), { demo: true });
+  html += rowHTML("Continue Watching for Cody", continueItems, { progress: true });
+  html += rowHTML("Trending Now", trending);
+  html += rowHTML("Top 10 in the U.S. Today", top10, { rank: true });
+  html += rowHTML("Netflix Originals", originals);
+  html += rowHTML(`Because you watched ${seed.title}`, because);
+  html += rowHTML("New Releases", newReleases);
+  genres.forEach((g, i) => {
+    const items = shuffle(DEMO.filter(t => t.genres.includes(g)), i + 11 + d);
+    if (items.length >= 4) html += rowHTML(g, items);
+  });
+  html += await freeRowsHTML();
+  if (listItems.length) html += rowHTML("My List", listItems);
+  return html;
+}
+
+/* ==================================================================
+   TMDB VIEWS
+================================================================== */
+async function tmdbHome() {
+  const [trend, mov, tv, top, up, onair, act, com, dra] = await Promise.all([
+    api("/trending/all/week"), api("/movie/popular"), api("/tv/popular"),
+    api("/movie/top_rated"), api("/movie/upcoming"), api("/tv/on_the_air"),
+    api("/discover/movie", { with_genres: 28, sort_by: "popularity.desc" }),
+    api("/discover/movie", { with_genres: 35, sort_by: "popularity.desc" }),
+    api("/discover/tv", { with_genres: 18, sort_by: "popularity.desc" })
+  ]);
+
+  const trendItems = trend.results.filter(x => x.media_type !== "person").map(x => fromTMDB(x));
+  const heroPool = trendItems.filter(x => x.backdrop);
+  // Start the hero rotation at a day-seeded offset so each day opens on a different title
+  const off = heroPool.length ? dayOfYear() % heroPool.length : 0;
+  const rotated = heroPool.slice(off).concat(heroPool.slice(0, off));
+  const hero = rotated.find(x => !state.heroSeen.has(x.key)) || rotated[0] || trendItems[0];
+  if (hero) state.heroSeen.add(hero.key);
+
+  const top10 = trendItems.slice(0, 10);
+  const listItems = state.myList.filter(x => x.mediaType !== "demo");
+
+  let html = hero ? heroHTML(hero) : "";
+  html += rowHTML("Top 10 This Week", top10, { rank: true });
+  html += rowHTML("Trending Now", trendItems.slice(0, 18));
+  html += rowHTML("Popular Movies", mov.results.map(x => fromTMDB(x, "movie")));
+  html += rowHTML("Popular TV Shows", tv.results.map(x => fromTMDB(x, "tv")));
+  html += rowHTML("Certified Fresh: Top Rated", top.results.map(x => fromTMDB(x, "movie")));
+  html += rowHTML("New & Upcoming", [
+    ...up.results.map(x => fromTMDB(x, "movie")),
+    ...onair.results.map(x => fromTMDB(x, "tv"))
+  ]);
+  html += rowHTML("Action", act.results.map(x => fromTMDB(x, "movie")));
+  html += rowHTML("Comedies", com.results.map(x => fromTMDB(x, "movie")));
+  html += rowHTML("Drama Series", dra.results.map(x => fromTMDB(x, "tv")));
+  html += await freeRowsHTML();
+  if (listItems.length) html += rowHTML("My List", listItems);
+  return html;
+}
+
+async function tmdbGrid(tab) {
+  const genreKey = () => "g:" + state.genre.mt + ":" + state.genre.id;
+  if (tab === "genres" && state.genre) {
+    const page = state.pages[genreKey()] || 1;
+    const d = state.genre.mt === "tv"
+      ? await api("/discover/tv", { with_genres: state.genre.id, page, sort_by: "popularity.desc" })
+      : await api("/discover/movie", { with_genres: state.genre.id, page, sort_by: "popularity.desc" });
+    return {
+      items: d.results.map(x => fromTMDB(x, state.genre.mt)),
+      title: state.genre.name,
+      sub: `${d.total_results} ${state.genre.mt === "tv" ? "series" : "titles"} · page ${page}`,
+      hasMore: page < Math.min(d.total_pages, 500)
+    };
+  }
+  const page = state.pages[tab] || 1;
+  if (tab === "shows") {
+    const d = await api("/tv/popular", { page });
+    return {
+      items: d.results.map(x => fromTMDB(x, "tv")), title: "TV Shows", sub: "",
+      hasMore: page < Math.min(d.total_pages, 500)
+    };
+  }
+  if (tab === "movies") {
+    const d = await api("/movie/popular", { page });
+    return {
+      items: d.results.map(x => fromTMDB(x, "movie")), title: "Movies", sub: "",
+      hasMore: page < Math.min(d.total_pages, 500)
+    };
+  }
+  if (tab === "new") {
+    const [a, b] = await Promise.all([
+      api("/movie/now_playing", { page }), api("/tv/on_the_air", { page })
+    ]);
+    return {
+      items: [
+        ...a.results.map(x => fromTMDB(x, "movie")),
+        ...b.results.map(x => fromTMDB(x, "tv"))
+      ].sort((x, y) => (y.year || "").localeCompare(x.year || "")),
+      title: "New & Popular", sub: "Fresh releases and what everyone's watching right now.",
+      hasMore: page < Math.min(a.total_pages, b.total_pages, 500)
+    };
+  }
+  return { items: [], title: "", sub: "", hasMore: false };
+}
+
+async function tmdbSearch(q) {
+  const [d, free] = await Promise.all([
+    api("/search/multi", { query: q, include_adult: false }),
+    freeSearch(q)
+  ]);
+  const items = [
+    ...free,
+    ...d.results.filter(x => x.media_type === "movie" || x.media_type === "tv").map(x => fromTMDB(x))
+  ];
+  return items.length
+    ? gridPage(`Search results for "${q}"`, items, `${items.length} title${items.length > 1 ? "s" : ""} found`)
+    : `<div class="view"><h2>Your search for "${esc(q)}" did not have any matches.</h2>
+       <p class="empty">Try different keywords, or search for a <b>title</b>, <b>genre</b>, or <b>actor</b>.</p></div>`;
+}
+
+/* ==================================================================
+   RENDER
+================================================================== */
+let renderSeq = 0;
+async function render() {
+  const seq = ++renderSeq;
+  const app = $("#app");
+  const tmdbMode = state.mode === "tmdb" && state.apiKey;
+  document.body.classList.toggle("mode-tmdb", tmdbMode);
+
+  if (!tmdbMode) {
+    if (state.query) {
+      const q = state.query.toLowerCase();
+      const res = [
+        ...DEMO.filter(t =>
+          t.title.toLowerCase().includes(q) || t.genres.some(g => g.toLowerCase().includes(q)) ||
+          t.cast.some(c => c.toLowerCase().includes(q)) || t.desc.toLowerCase().includes(q)),
+        ...(await freeSearch(state.query))
+      ];
+      app.innerHTML = res.length
+        ? gridPage(`Search results for "${state.query}"`, res, `${res.length} title${res.length > 1 ? "s" : ""} found`)
+        : `<div class="view"><h2>Your search for "${esc(state.query)}" did not have any matches.</h2>
+           <p class="empty">Try different keywords, or search for a <b>title</b>, <b>genre</b>, or <b>actor</b>.</p></div>`;
+    } else if (state.tab === "home") app.innerHTML = await homeViewDemo();
+    else if (state.tab === "shows") app.innerHTML = gridPage("TV Shows", DEMO.filter(t => t.type === "series"));
+    else if (state.tab === "movies") app.innerHTML = gridPage("Movies", DEMO.filter(t => t.type === "film"));
+    else if (state.tab === "new") app.innerHTML = gridPage("New & Popular",
+      [...DEMO].sort((a, b) => b.year - a.year || b.match - a.match), "Fresh releases and what everyone's watching right now.");
+    else if (state.tab === "free") app.innerHTML = await freePage();
+    else if (state.tab === "genres") app.innerHTML = state.genre
+      ? genreResultsView(state.genre.name,
+          DEMO.filter(t => t.genres.includes(state.genre.name)),
+          `${DEMO.filter(t => t.genres.includes(state.genre.name)).length} titles in the demo catalog`)
+      : genreTilesHTML(demoGenreTiles(), "Browse the built-in demo catalog by genre.");
+    else if (state.tab === "mylist") { app.innerHTML = myListView(); maybeFetchRecs(seq); }
+    window.scrollTo(0, 0);
+    return;
+  }
+
+  /* TMDB mode */
+  try {
+    if (state.query) {
+      app.innerHTML = await tmdbSearch(state.query);
+    } else if (state.tab === "home") {
+      app.innerHTML = skeletonView();
+      const html = await tmdbHome();
+      if (seq !== renderSeq) return;
+      app.innerHTML = html;
+    } else if (state.tab === "mylist") {
+      app.innerHTML = myListView();
+      maybeFetchRecs(seq);
+    } else if (state.tab === "genres") {
+      if (!state.genre) {
+        if (!Object.keys(state.genres.movie).length) {
+          app.innerHTML = skeletonView();
+          await loadGenres();
+          if (seq !== renderSeq) return;
+        }
+        app.innerHTML = genreTilesHTML(tmdbGenreTiles(), "Movies and shows, sorted by genre.");
+      } else {
+        app.innerHTML = skeletonView();
+        const { items, title, sub, hasMore } = await tmdbGrid("genres");
+        if (seq !== renderSeq) return;
+        app.innerHTML = genreResultsView(title, items, sub) + (hasMore
+          ? `<div class="load-more"><button class="btn btn-ghost" data-act="more">Load More</button></div>` : "");
+      }
+    } else if (state.tab === "free") {
+      app.innerHTML = skeletonView();
+      const html = await freePage();
+      if (seq !== renderSeq) return;
+      app.innerHTML = html;
+    } else {
+      app.innerHTML = skeletonView();
+      const { items, title, sub, hasMore } = await tmdbGrid(state.tab);
+      if (seq !== renderSeq) return;
+      app.innerHTML = gridPage(title, items, sub) + (hasMore
+        ? `<div class="load-more"><button class="btn btn-ghost" data-act="more">Load More</button></div>` : "");
+    }
+    if (seq === renderSeq) window.scrollTo(0, 0);
+  } catch (e) {
+    if (seq !== renderSeq) return;
+    app.innerHTML = errorView(e);
+    if (e.code === "auth") openSetup("Your API key was rejected by TMDB. Please check it and save again.");
+  }
+}
+
+/* ==================================================================
+   PROFILES — each profile has its own saved My List
+================================================================== */
+const profileEmoji = name => (state.profiles.find(p => p.name === name) || {}).emoji || "🙂";
+const saveProfiles = () => store.set("nf_profiles", state.profiles);
+
+function renderProfileMenu() {
+  const box = document.getElementById("pmProfiles");
+  if (!box) return;
+  box.innerHTML = state.profiles.map(p =>
+    `<a href="#" data-menu="profile" data-profile="${esc(p.name)}">${p.emoji} ${esc(p.name)} ` +
+    `<span class="pm-active" data-for="${esc(p.name)}">✓</span></a>`).join("");
+}
+
+function updateProfileUI() {
+  renderProfileMenu();
+  document.querySelectorAll(".pm-active").forEach(el =>
+    el.classList.toggle("on", el.dataset.for === state.profile));
+  const av = $("#avatarBtn");
+  if (av) av.textContent = profileEmoji(state.profile);
+}
+
+/* ---------- "Who's watching?" gate ---------- */
+function updateGate() {
+  const row = document.getElementById("gateRow");
+  if (!row) return;
+  const tiles = state.profiles.map(p => {
+    const n = store.get(listKey(p.name), []).length;
+    const current = p.name === state.profile;
+    return `<button class="gate-p ${current ? "current" : ""}" data-profile="${esc(p.name)}">
+      <span class="gate-av" style="background:${p.bg}">${p.emoji}</span>
+      <span class="gate-name">${esc(p.name)}</span>
+      <span class="gate-count">${n ? `${n} title${n > 1 ? "s" : ""} in My List` : "No titles yet"}</span>
+    </button>`;
+  }).join("");
+  const add = `<button class="gate-p gate-add" data-act="add-profile" title="Add profile">
+      <span class="gate-av">＋</span>
+      <span class="gate-name">Add profile</span>
+      <span class="gate-count">&nbsp;</span>
+    </button>`;
+  row.innerHTML = tiles + add;
+  row.classList.toggle("editing", state.editProfiles);
+  const mb = document.getElementById("gateManage");
+  if (mb) mb.textContent = state.editProfiles ? "Done" : "Manage Profiles";
+}
+function openGate() {
+  updateGate();
+  document.getElementById("gate").classList.add("show");
+  document.body.classList.add("gate-open");
+  state.gateOpen = true;
+}
+function closeGate() {
+  document.getElementById("gate").classList.remove("show");
+  document.body.classList.remove("gate-open");
+  state.gateOpen = false;
+  state.editProfiles = false;
+  updateGate();
+}
+/* First-run setup waits until the gate is dismissed so modals never stack */
+function openSetupAfterGate() {
+  if (!store.get("nf_setup_seen", false)) setTimeout(openSetup, 900);
+}
+
+/* ---------- Create / edit / delete profile ---------- */
+const PROFILE_EMOJIS = ["🎬", "🧸", "👾", "🐱", "🚀", "🌈", "⚽", "🎧", "🦊", "🍕"];
+
+function openProfileModal(name) {
+  const editing = !!name;
+  const p = editing ? state.profiles.find(x => x.name === name) : null;
+  const emo = p?.emoji || "🙂";
+  const root = $("#modalRoot");
+  root.innerHTML = `
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal pm-modal" role="dialog" aria-label="${editing ? "Edit profile" : "Add profile"}">
+      <button class="m-close" data-close>✕</button>
+      <h2>${editing ? "Edit profile" : "Add profile"}</h2>
+      <div class="pm-avatar" id="pmAvatar" style="background:${p?.bg || "linear-gradient(135deg,#5a5a5a,#2b2b2b)"}">${emo}</div>
+      <label for="pmName">Profile name</label>
+      <input type="text" id="pmName" maxlength="16" placeholder="e.g. Alex" value="${esc(p?.name || "")}" autocomplete="off">
+      <label>Choose an avatar</label>
+      <div class="pm-emos">${PROFILE_EMOJIS.map(e =>
+        `<button type="button" class="pm-emo ${e === emo ? "sel" : ""}" data-act="pick-emo" data-emo="${e}" aria-label="Avatar ${e}">${e}</button>`).join("")}</div>
+      <div class="pm-ops">
+        ${editing ? `<button class="btn btn-ghost pm-del" data-act="del-profile" data-profile="${esc(name)}">Delete profile</button>` : ""}
+        <button class="btn btn-play" data-act="save-profile" data-profile="${editing ? esc(name) : ""}">${editing ? "Save changes" : "Create profile"}</button>
+      </div>
+      <div class="err" id="pmErr"></div>
+    </div>`;
+  root.classList.add("open");
+  document.body.classList.add("no-scroll");
+  setTimeout(() => $("#pmName")?.focus(), 100);
+}
+
+function saveProfileForm(oldName) {
+  const name = ($("#pmName")?.value || "").trim();
+  const emo = document.querySelector(".pm-emo.sel")?.dataset.emo || "🙂";
+  const err = $("#pmErr");
+  const fail = msg => { if (err) { err.textContent = msg; err.classList.add("show"); } };
+  if (!name) return fail("Please enter a name.");
+  if (state.profiles.some(p => p.name.toLowerCase() === name.toLowerCase() && p.name !== oldName))
+    return fail("That name is already taken.");
+
+  if (oldName) {
+    const p = state.profiles.find(x => x.name === oldName);
+    if (p) {
+      if (name !== oldName) {                       // rename: carry the My List over
+        const oldList = store.get(listKey(oldName), null);
+        if (oldList !== null && store.get(listKey(name), null) === null) store.set(listKey(name), oldList);
+        try { localStorage.removeItem(listKey(oldName)); } catch {}
+        if (state.profile === oldName) { state.profile = name; store.set("nf_profile", name); }
+      }
+      p.name = name;
+      p.emoji = emo;
+    }
+    toast(`Profile updated — now "${name}"`);
+  } else {
+    const [c1, c2] = strColors(name);
+    state.profiles.push({ name, emoji: emo, bg: `linear-gradient(135deg,${c1},${c2})` });
+    toast(`Profile "${name}" created — tap it to start watching`);
+  }
+  saveProfiles();
+  closeModal();
+  updateProfileUI();
+  updateGate();
+  if (state.tab === "mylist") render();
+}
+
+function deleteProfile(name) {
+  state.profiles = state.profiles.filter(p => p.name !== name);
+  if (!state.profiles.length) return;              // never end up with zero profiles
+  saveProfiles();
+  try { localStorage.removeItem(listKey(name)); } catch {}
+  if (state.profile === name) {                    // deleting the active profile falls back to the first one
+    state.profile = state.profiles[0].name;
+    store.set("nf_profile", state.profile);
+    state.myList = store.get(listKey(state.profile), [])
+      .map(x => (typeof x === "number" ? DEMO_CARD(x) : x))
+      .filter(Boolean);
+    state.recs = null;
+  }
+  closeModal();
+  updateProfileUI();
+  updateGate();
+  render();
+  toast(`Deleted profile "${name}"`);
+}
+
+function switchProfile(name) {
+  if (!name || name === state.profile) { toast(`Already watching as ${name}`); return; }
+  saveList();                       // persist the outgoing profile's list first
+  state.profile = name;
+  store.set("nf_profile", name);
+  state.myList = store.get(listKey(name), [])
+    .map(x => (typeof x === "number" ? DEMO_CARD(x) : x))
+    .filter(Boolean);
+  state.recs = null;
+  state.genre = null;
+  updateProfileUI();
+  updateGate();
+  render();
+  toast(`Switched to ${name} — ${state.myList.length} title${state.myList.length === 1 ? "" : "s"} in this My List`);
+}
+
+/* ==================================================================
+   MY LIST
+================================================================== */
+function toggleList(key) {
+  const card = registry.get(key);
+  if (!card) return;
+  if (inList(key)) {
+    state.myList = state.myList.filter(x => x.key !== key);
+    toast(`Removed "${card.title}" from My List`);
+  } else {
+    state.myList.push(card);
+    toast(`Added "${card.title}" to My List`);
+  }
+  saveList();
+  state.recs = null;   // list changed — rebuild recommendations next time the panel opens
+  document.querySelectorAll(`.list-btn[data-key="${CSS.escape(key)}"]`).forEach(btn => {
+    const on = inList(key);
+    if (btn.classList.contains("circle-btn")) { btn.textContent = on ? "✓" : "+"; btn.classList.toggle("on", on); }
+    else btn.textContent = on ? "✓ In My List" : "+ My List";
+  });
+  if (state.tab === "mylist" && !$("#modalRoot").classList.contains("open")) {
+    render();
+    if (state.showRecs) {
+      fetchRecs().then(() => {
+        if (state.showRecs && state.tab === "mylist" && !$("#modalRoot").classList.contains("open")) render();
+      });
+    }
+  }
+}
+
+/* ==================================================================
+   DEMO MODAL
+================================================================== */
+function episodesFor(t) {
+  if (t.type !== "series") return [];
+  if (!state._eps || state._eps[t.key] === undefined) {
+    state._eps = state._eps || {};
+    const count = parseInt(t.duration) || 1;
+    const seasons = [];
+    for (let s = 0; s < count; s++) {
+      seasons.push(Array.from({ length: 8 }, (_, i) => ({
+        n: i + 1,
+        name: EP_NAMES[(t.id + s * 3 + i) % EP_NAMES.length],
+        dur: 42 + ((t.id + i * 7) % 18),
+        desc: `Episode ${i + 1} — ${t.title}'s story deepens as old loyalties are tested and a new threat emerges from the shadows.`
+      })));
+    }
+    state._eps[t.key] = seasons;
+  }
+  return state._eps[t.key];
+}
+
+function similarHTML(items) {
+  return items.map(s => `
+    <div class="sim-card" data-key="${s.key}">
+      ${posterHTML(s)}
+      <div class="sim-body">
+        <div class="sim-meta">${s.match != null ? `<span class="match">${s.match}% Match</span>` : ""}${s.year ? `<span>${s.year}</span>` : ""}<span class="badge-age">${esc(s.rating || (s.mediaType === "tv" ? "Series" : "Film"))}</span></div>
+        <p><b>${esc(s.title)}</b> — ${esc(s.desc.slice(0, 90))}…</p>
+      </div>
+    </div>`).join("");
+}
+
+function openDemoModal(t) {
+  const root = $("#modalRoot");
+  const eps = episodesFor(t);
+  const added = inList(t.key);
+  const sims = shuffle(DEMO.filter(x => x.key !== t.key), t.id + 5).slice(0, 6);
+  const seasonOpts = eps.map((_, i) => `<option value="${i}">Season ${i + 1}</option>`).join("");
+
+  root.innerHTML = `
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal" role="dialog" aria-label="${esc(t.title)}">
+      <button class="m-close" data-close>✕</button>
+      <div class="m-hero" style="--c1:${t.c1};--c2:${t.c2}">
+        <span class="m-emoji">${t.emoji}</span>
+        <div class="m-hero-content">
+          <h2>${esc(t.title)}</h2>
+          <div class="m-ops">
+            <button class="btn btn-play" data-act="play" data-key="${t.key}">▶ Play</button>
+            <button class="circle-btn list-btn" data-act="list" data-key="${t.key}">${added ? "✓" : "+"}</button>
+            <button class="circle-btn" title="Like">👍</button>
+          </div>
+        </div>
+      </div>
+      <div class="m-body">
+        <div>
+          <div class="m-meta">
+            <span class="match">${t.match}% Match</span><span>${t.year}</span>
+            <span class="badge-age">${t.rating}</span><span>${esc(t.duration)}</span>
+            <span class="hd">HD</span><span class="hd">${t.type === "series" ? "SERIES" : "FILM"}</span>
+          </div>
+          <p class="m-desc">${esc(t.desc)}</p>
+        </div>
+        <div class="m-side">
+          <p>Cast: <span>${t.cast.map(esc).join(", ")}</span></p>
+          <p>Genres: <span>${t.genres.map(esc).join(", ")}</span></p>
+          <p>This ${t.type === "series" ? "show" : "movie"} is: <span>${t.genres.join(", ")}, ${t.match > 92 ? "Binge-worthy" : "Compelling"}</span></p>
+        </div>
+        ${eps.length ? `
+        <div class="m-section">
+          <h3>Episodes</h3>
+          <select class="season-sel" id="seasonSel">${seasonOpts}</select>
+          <div id="epList"></div>
+        </div>` : ""}
+        <div class="m-section">
+          <h3>More Like This</h3>
+          <div class="similar-grid">${similarHTML(sims)}</div>
+        </div>
+      </div>
+    </div>`;
+
+  root.classList.add("open");
+  document.body.classList.add("no-scroll");
+  root.querySelector(".modal").scrollTop = 0;
+
+  const renderEps = s => {
+    $("#epList").innerHTML = eps[s].map(e => `
+      <div class="ep">
+        <div class="ep-num">${e.n}</div>
+        <div class="ep-still" style="--c1:${t.c1};--c2:${t.c2}">${t.emoji}<span class="play-ic">▶</span></div>
+        <div class="ep-info">
+          <div class="ep-top"><span>${esc(e.name)}</span><span>${e.dur}m</span></div>
+          <p>${esc(e.desc)}</p>
+        </div>
+      </div>`).join("");
+  };
+  if (eps.length) {
+    const sel = $("#seasonSel");
+    renderEps(+sel.value);
+    sel.addEventListener("change", () => renderEps(+sel.value));
+  }
+}
+
+/* ==================================================================
+   TMDB MODAL
+================================================================== */
+async function openTMDBModal(card) {
+  const root = $("#modalRoot");
+  const isTv = card.mediaType === "tv";
+  const bg = img(card.backdrop, "w1280");
+  const heroStyle = [`--c1:${card.c1}`, `--c2:${card.c2}`];
+  if (bg) heroStyle.push(`background-image:linear-gradient(to top,var(--panel),transparent 60%),url('${bg}')`);
+
+  root.innerHTML = `
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal" role="dialog" aria-label="${esc(card.title)}">
+      <button class="m-close" data-close>✕</button>
+      <div class="m-hero" id="mHero" style="${heroStyle.join(";")}">
+        ${bg ? "" : `<span class="m-emoji">${card.emoji}</span>`}
+        <div class="m-hero-content">
+          <h2>${esc(card.title)}</h2>
+          <div class="m-ops" id="mOps">
+            <button class="btn btn-play" disabled style="opacity:.6">⏳ Loading…</button>
+            <button class="circle-btn list-btn" data-act="list" data-key="${card.key}">${inList(card.key) ? "✓" : "+"}</button>
+          </div>
+        </div>
+      </div>
+      <div class="m-body" id="mBody">
+        <div><p class="m-desc" style="color:#888">Loading details…</p></div>
+        <div class="m-side"></div>
+      </div>
+    </div>`;
+
+  root.classList.add("open");
+  document.body.classList.add("no-scroll");
+  root.querySelector(".modal").scrollTop = 0;
+
+  let d;
+  try {
+    d = await api(`/${card.mediaType}/${card.tmdbId}`, {
+      append_to_response: "credits,videos,watch/providers,similar,release_dates,content_ratings"
+    });
+  } catch (e) {
+    const body = $("#mBody");
+    if (body) body.innerHTML = `<div class="m-section"><p class="m-desc">Couldn't load details: ${esc(e.message)}</p></div>`;
+    return;
+  }
+  if (!root.classList.contains("open")) return;
+
+  /* --- meta --- */
+  const cert = isTv
+    ? (d.content_ratings?.results?.find(r => r.iso_3166_1 === state.region)?.rating ||
+       d.content_ratings?.results?.find(r => r.iso_3166_1 === "US")?.rating || "TV")
+    : (d.release_dates?.results?.find(r => r.iso_3166_1 === state.region)?.release_dates?.find(x => x.certification)?.certification ||
+       d.release_dates?.results?.find(r => r.iso_3166_1 === "US")?.release_dates?.find(x => x.certification)?.certification || "NR");
+  const year = (d.release_date || d.first_air_date || "").slice(0, 4);
+  const duration = isTv
+    ? `${d.number_of_seasons} Season${d.number_of_seasons > 1 ? "s" : ""}`
+    : (d.runtime ? `${Math.floor(d.runtime / 60)}h ${String(d.runtime % 60).padStart(2, "0")}m` : "");
+  const match = d.vote_average > 0 ? Math.round(d.vote_average * 10) : null;
+  const genres = (d.genres || []).map(g => g.name);
+  card.rating = cert; card.duration = duration; card.match = match ?? card.match;
+  card.genres = genres.length ? genres : card.genres;
+  card.desc = d.overview || card.desc;
+  reg(card);
+
+  /* --- trailer --- */
+  const vids = d.videos?.results || [];
+  const trailer = vids.find(v => v.site === "YouTube" && v.type === "Trailer" && v.official)
+    || vids.find(v => v.site === "YouTube" && v.type === "Trailer")
+    || vids.find(v => v.site === "YouTube" && v.type === "Teaser");
+
+  $("#mOps").innerHTML = `
+    ${trailer ? `<button class="btn btn-play" data-act="trailer" data-yt="${trailer.key}">▶ Play Trailer</button>`
+              : `<button class="btn btn-play" disabled style="opacity:.5">No Trailer</button>`}
+    <button class="circle-btn list-btn" data-act="list" data-key="${card.key}">${inList(card.key) ? "✓" : "+"}</button>
+    <button class="circle-btn" title="Like">👍</button>
+    ${trailer ? `<a class="circle-btn" style="text-decoration:none" title="Watch on YouTube" href="https://www.youtube.com/watch?v=${trailer.key}" target="_blank" rel="noopener">↗</a>` : ""}`;
+
+  if (state.autoplayTrailer === card.key) {
+    state.autoplayTrailer = null;
+    const tb = document.querySelector('#mOps [data-act="trailer"]');
+    if (tb) tb.click();
+    else toast("No trailer available for this title");
+  }
+
+  /* --- body --- */
+  const cast = (d.credits?.cast || []).slice(0, 6).map(c => c.name);
+  const crew = d.credits?.crew || [];
+  const creator = isTv ? (d.created_by || []).map(c => c.name).join(", ")
+                       : crew.filter(c => c.job === "Director").map(c => c.name).join(", ");
+
+  /* watch providers */
+  const wp = d["watch/providers"]?.results?.[state.region];
+  let watchHTML = "";
+  if (wp) {
+    const all = [];
+    [["Subscription", wp.flatrate], ["Free", wp.free], ["Rent", wp.rent], ["Buy", wp.buy]].forEach(([kind, arr]) => {
+      (arr || []).forEach(p => {
+        if (!all.some(x => x.provider_id === p.provider_id)) all.push({ ...p, kind });
+      });
+    });
+    watchHTML = `
+      <div class="m-section">
+        <h3>Where to Watch</h3>
+        <div class="providers">
+          ${all.slice(0, 12).map(p => `
+            <span class="prov">
+              ${p.logo_path ? `<img src="${img(p.logo_path, "w92")}" alt="" onerror="this.remove()">` : ""}
+              ${esc(p.provider_name)} <span class="prov-kind">${p.kind}</span>
+            </span>`).join("")}
+        </div>
+        ${wp.link ? `<a class="watch-link" href="${wp.link}" target="_blank" rel="noopener">See all options &amp; pricing ↗</a>` : ""}
+        <p class="watch-note">Availability for ${esc(REGIONS.find(r => r[0] === state.region)?.[1] || state.region)}, via JustWatch.
+        This app does not host or stream any video — links open the legal provider.</p>
+      </div>`;
+  } else {
+    watchHTML = `
+      <div class="m-section">
+        <h3>Where to Watch</h3>
+        <p class="watch-note">No listing found for your region (${esc(state.region)}).
+        Check <a class="watch-link" href="https://www.justwatch.com" target="_blank" rel="noopener">JustWatch</a> for current availability.</p>
+      </div>`;
+  }
+
+  $("#mBody").innerHTML = `
+    <div>
+      <div class="m-meta">
+        ${match != null ? `<span class="match">${match}% Match</span>` : ""}
+        ${year ? `<span>${year}</span>` : ""}
+        <span class="badge-age">${esc(cert)}</span>
+        ${duration ? `<span>${esc(duration)}</span>` : ""}
+        <span class="hd">HD</span><span class="hd">${isTv ? "SERIES" : "FILM"}</span>
+      </div>
+      <p class="m-desc">${esc(d.overview || card.desc)}</p>
+    </div>
+    <div class="m-side">
+      ${creator ? `<p>${isTv ? "Creators" : "Director"}: <span>${esc(creator)}</span></p>` : ""}
+      ${cast.length ? `<p>Cast: <span>${cast.map(esc).join(", ")}</span></p>` : ""}
+      <p>Genres: <span>${genres.map(esc).join(", ") || "—"}</span></p>
+      <p>User score: <span>${d.vote_average ? d.vote_average.toFixed(1) + " / 10" : "Not yet rated"}</span></p>
+    </div>
+    ${isTv && d.number_of_seasons > 0 ? `
+      <div class="m-section">
+        <h3>Episodes</h3>
+        <select class="season-sel" id="seasonSel">${
+          Array.from({ length: Math.min(d.number_of_seasons, 30) }, (_, i) =>
+            `<option value="${i + 1}">Season ${i + 1}</option>`).join("")
+        }</select>
+        <div id="epList"><p class="m-desc" style="color:#888">Loading episodes…</p></div>
+      </div>` : ""}
+    ${watchHTML}
+    <div class="m-section">
+      <h3>More Like This</h3>
+      <div class="similar-grid">${similarHTML((d.similar?.results || []).slice(0, 6).map(x => fromTMDB(x, card.mediaType)))}</div>
+    </div>`;
+
+  if (isTv && d.number_of_seasons > 0) {
+    const sel = $("#seasonSel");
+    const loadSeason = async n => {
+      const box = $("#epList");
+      box.innerHTML = `<p class="m-desc" style="color:#888">Loading episodes…</p>`;
+      try {
+        const s = await api(`/tv/${card.tmdbId}/season/${n}`);
+        box.innerHTML = s.episodes.map(e => `
+          <div class="ep">
+            <div class="ep-num">${e.episode_number}</div>
+            <div class="ep-still" style="--c1:${card.c1};--c2:${card.c2}">
+              ${e.still_path ? `<img src="${img(e.still_path, "w300")}" alt="" onerror="this.remove()">` : card.emoji}
+              <span class="play-ic">▶</span>
+            </div>
+            <div class="ep-info">
+              <div class="ep-top"><span>${esc(e.name || "Episode " + e.episode_number)}</span><span>${e.runtime ? e.runtime + "m" : ""}</span></div>
+              <p>${esc(e.overview || "No overview available.")}</p>
+            </div>
+          </div>`).join("");
+      } catch (err) {
+        box.innerHTML = `<p class="m-desc" style="color:#888">Couldn't load episodes: ${esc(err.message)}</p>`;
+      }
+    };
+    sel.addEventListener("change", () => loadSeason(+sel.value));
+    loadSeason(+sel.value);
+  }
+}
+
+function openModal(key) {
+  const card = registry.get(key);
+  if (!card) return;
+  if (card.mediaType === "demo") openDemoModal(card);
+  else if (card.mediaType === "yt" || card.mediaType === "pd") openFreeModal(card);
+  else openTMDBModal(card);
+}
+
+/* ==================================================================
+   FREE MODAL — plays YouTube embeds / Internet Archive MP4s
+================================================================== */
+function openFreeModal(card) {
+  const root = $("#modalRoot");
+  const isYT = card.mediaType === "yt";
+  const pool = [...(pdCache || []), ...YT_CARDS];
+  const seed = strHash(card.key);
+  const others = pool.filter(x => x.key !== card.key)
+    .sort((a, b) => (strHash(a.key) + seed) % 7 - (strHash(b.key) + seed) % 7)
+    .slice(0, 6);
+  const srcURL = isYT
+    ? `https://www.youtube.com/watch?v=${card.ytId}`
+    : `https://archive.org/details/${card.iaId}`;
+
+  root.innerHTML = `
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal" role="dialog" aria-label="${esc(card.title)}">
+      <button class="m-close" data-close>✕</button>
+      <div class="stage" id="stage"><div class="stage-msg">⏳ Preparing player…</div></div>
+      <div class="f-head">
+        <h2>${esc(card.title)}</h2>
+        <div class="f-sub">${card.year ? esc(card.year) + " · " : ""}${esc(card.genres.join(", "))}
+          · Free on ${isYT ? esc(card.channel) : "the Internet Archive"}</div>
+      </div>
+      <div class="m-body">
+        <div>
+          <div class="m-meta">
+            <span class="badge-free">FREE</span>
+            <span class="badge-age">${esc(card.rating)}</span>
+            <span class="hd">${isYT ? "YOUTUBE" : "PUBLIC DOMAIN"}</span>
+            <span class="hd">HD</span>
+          </div>
+          <p class="m-desc">${esc(card.desc)}</p>
+        </div>
+        <div class="m-side">
+          <p>${isYT ? "Channel" : "Source"}: <span>${esc(card.channel)}</span></p>
+          <p>License: <span>${isYT
+            ? "Free to watch — officially uploaded by the rights holder's channel"
+            : "Public domain — free to view, share, and reuse"}</span></p>
+          <div class="m-ops">
+            <button class="circle-btn list-btn" data-act="list" data-key="${card.key}">${inList(card.key) ? "✓" : "+"}</button>
+            <a class="circle-btn" style="text-decoration:none" title="Open source"
+               href="${srcURL}" target="_blank" rel="noopener">↗</a>
+          </div>
+        </div>
+        <div class="m-section">
+          <h3>More Free Movies</h3>
+          <div class="similar-grid">${similarHTML(others)}</div>
+        </div>
+      </div>
+    </div>`;
+
+  root.classList.add("open");
+  document.body.classList.add("no-scroll");
+  root.querySelector(".modal").scrollTop = 0;
+  loadFreePlayer(card);
+}
+
+async function loadFreePlayer(card) {
+  const stage = document.getElementById("stage");
+  if (!stage) return;
+
+  if (card.mediaType === "yt") {
+    stage.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${card.ytId}?autoplay=1&rel=0"
+      allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen
+      title="${esc(card.title)}"></iframe>`;
+    return;
+  }
+
+  const fallback = () => {
+    const s = document.getElementById("stage");
+    if (s) s.innerHTML = `<div class="stage-msg">Couldn't load the video here.<br>
+      <a href="https://archive.org/details/${card.iaId}" target="_blank" rel="noopener">Open it on archive.org ↗</a></div>`;
+  };
+
+  try {
+    const m = await (await fetch(`https://archive.org/metadata/${card.iaId}`)).json();
+    const files = (m.files || []).filter(f =>
+      /\.mp4$/i.test(f.name || "") && !/sample|trailer|preview/i.test(f.name || ""));
+    if (!files.length) { fallback(); return; }
+    files.sort((a, b) => (+a.size || 0) - (+b.size || 0));
+    const src = `https://archive.org/download/${card.iaId}/${encodeURIComponent(files[0].name)}`;
+    const s = document.getElementById("stage");
+    if (!s) return;
+    s.innerHTML = `<video controls autoplay preload="metadata" poster="${card.poster || ""}" src="${src}"></video>`;
+    s.querySelector("video").addEventListener("error", fallback);
+  } catch {
+    fallback();
+  }
+}
+
+function closeModal() {
+  const root = $("#modalRoot");
+  root.classList.remove("open");
+  root.innerHTML = "";
+  document.body.classList.remove("no-scroll");
+}
+
+/* ==================================================================
+   SETUP / SETTINGS MODAL
+================================================================== */
+function openSetup(errMsg) {
+  store.set("nf_setup_seen", true);
+  const root = $("#modalRoot");
+  root.innerHTML = `
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal setup" role="dialog" aria-label="Settings">
+      <button class="m-close" data-close>✕</button>
+      <h2>Connect real movie &amp; TV data</h2>
+      <p class="sub">This app uses <b>The Movie Database (TMDB)</b> — free and legal — for real titles,
+      posters, ratings, trailers, and legal "where to watch" links. You need a free API key (about 2 minutes):</p>
+      <ol>
+        <li>Create a free account at <a href="https://www.themoviedb.org/signup" target="_blank" rel="noopener">themoviedb.org/signup</a></li>
+        <li>Open <a href="https://www.themoviedb.org/settings/api" target="_blank" rel="noopener">Settings → API</a></li>
+        <li>Choose <b>"API Key (v3)"</b> → fill in the form (any name works) → Submit</li>
+        <li>Copy the <b>API Key</b> string and paste it below</li>
+      </ol>
+      <label for="keyInput">TMDB API Key (v3)</label>
+      <input type="text" id="keyInput" placeholder="e.g. a1b2c3d4e5f6..." value="${esc(state.apiKey)}" autocomplete="off">
+      <label for="regionInput">Your country (for watch links)</label>
+      <select id="regionInput">${REGIONS.map(([code, name]) =>
+        `<option value="${code}" ${code === state.region ? "selected" : ""}>${name}</option>`).join("")}</select>
+      <div class="err" id="setupErr">${esc(errMsg || "")}</div>
+      <div class="row-btns">
+        <button class="btn btn-play" data-act="save-setup">Save &amp; Load Catalog</button>
+        <button class="btn btn-ghost" data-act="skip-setup">Continue with demo catalog</button>
+      </div>
+      <p class="fine">Your key is stored only in this browser's local storage and sent only to api.themoviedb.org.
+      The demo catalog works fully offline if you'd rather not use a key.</p>
+    </div>`;
+  root.classList.add("open");
+  document.body.classList.add("no-scroll");
+  if (errMsg) $("#setupErr").classList.add("show");
+  setTimeout(() => $("#keyInput")?.focus(), 100);
+}
+
+async function saveSetup() {
+  const key = $("#keyInput").value.trim();
+  const region = $("#regionInput").value;
+  if (!key) { $("#setupErr").textContent = "Please paste your API key first."; $("#setupErr").classList.add("show"); return; }
+  state.apiKey = key; state.region = region; state.mode = "tmdb";
+  store.set("nf_key", key); store.set("nf_region", region); store.set("nf_mode", "tmdb");
+  memCache.clear();
+  closeModal();
+  toast("Connecting to TMDB…");
+  try {
+    await loadGenres();
+    toast("Connected! Loading real titles…");
+    render();
+  } catch (e) {
+    state.mode = "demo";
+    store.set("nf_mode", "demo");
+    render();
+    toast("Couldn't connect: " + e.message);
+    openSetup(e.code === "auth" ? "TMDB rejected that key. Make sure you copied the full \"API Key (v3)\" string." : e.message);
+  }
+}
+
+function skipSetup() {
+  store.set("nf_setup_seen", true);
+  state.mode = "demo";
+  store.set("nf_mode", "demo");
+  closeModal();
+  render();
+  toast("Using the built-in demo catalog");
+}
+
+/* ==================================================================
+   EVENTS
+================================================================== */
+function goTab(name) {
+  state.tab = name;
+  state.query = "";
+  state.pages = {};
+  $("#searchInput").value = "";
+  $("#searchBox").classList.remove("open");
+  document.querySelectorAll("#tabs button").forEach(b => b.classList.toggle("active", b.dataset.tab === name));
+  render();
+}
+
+document.addEventListener("click", e => {
+  const actBtn = e.target.closest("[data-act]");
+  if (actBtn) {
+    e.stopPropagation();
+    const key = actBtn.dataset.key;
+    const act = actBtn.dataset.act;
+    if (act === "play") {
+      const c = registry.get(key);
+      if (c?.mediaType === "yt" || c?.mediaType === "pd") openModal(key);
+      else if (c?.mediaType === "demo") toast(`▶ Now playing "${c.title}"…`);
+      else toast("Use ▶ Trailer — TMDB titles link to their official trailers");
+    }
+    if (act === "trailer") {
+      const yt = actBtn.dataset.yt;
+      const hero = $("#mHero");
+      if (hero && yt) {
+        const wrap = document.createElement("div");
+        wrap.className = "trailer-wrap";
+        wrap.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${yt}?autoplay=1&rel=0"
+          allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+        hero.appendChild(wrap);
+      }
+    }
+    if (act === "list") toggleList(key);
+    if (act === "info") openModal(key);
+    if (act === "trailer-hero") { state.autoplayTrailer = key; openModal(key); }
+    if (act === "setup") openSetup();
+    if (act === "more") {
+      const pkey = state.tab === "genres" && state.genre
+        ? "g:" + state.genre.mt + ":" + state.genre.id : state.tab;
+      state.pages[pkey] = (state.pages[pkey] || 1) + 1;
+      actBtn.disabled = true;
+      actBtn.textContent = "Loading…";
+      tmdbGrid(state.tab).then(({ items, hasMore }) => {
+        const grid = $("#app .grid");
+        if (grid) grid.insertAdjacentHTML("beforeend", items.map(c => cardHTML(c)).join(""));
+        const lm = $("#app .load-more");
+        if (lm) lm.remove();
+        if (hasMore) $("#app").insertAdjacentHTML("beforeend",
+          `<div class="load-more"><button class="btn btn-ghost" data-act="more">Load More</button></div>`);
+      }).catch(err => {
+        const lm = $("#app .load-more");
+        if (lm) lm.innerHTML = `<button class="btn btn-ghost" data-act="more">Load More</button>`;
+        toast("Couldn't load more: " + err.message);
+      });
+    }
+    if (act === "save-setup") saveSetup();
+    if (act === "skip-setup") skipSetup();
+    if (act === "gate-close") { closeGate(); openSetupAfterGate(); return; }
+    if (act === "gate-manage") { state.editProfiles = !state.editProfiles; updateGate(); return; }
+    if (act === "add-profile") { openProfileModal(null); return; }
+    if (act === "pick-emo") {
+      document.querySelectorAll(".pm-emo").forEach(b => b.classList.toggle("sel", b === actBtn));
+      const av = $("#pmAvatar");
+      if (av) av.textContent = actBtn.dataset.emo;
+      return;
+    }
+    if (act === "save-profile") { saveProfileForm(actBtn.dataset.profile || null); return; }
+    if (act === "del-profile") {
+      const pname = actBtn.dataset.profile;
+      if (state.profiles.length <= 1) { toast("You need at least one profile"); return; }
+      if (!actBtn.classList.contains("armed")) {   // two-tap confirm so a list is never lost by accident
+        actBtn.classList.add("armed");
+        actBtn.textContent = "Tap again to delete";
+        return;
+      }
+      deleteProfile(pname);
+      return;
+    }
+    if (act === "genre-back") { state.genre = null; render(); return; }
+    if (act === "recs") {
+      state.showRecs = !state.showRecs;
+      if (state.showRecs && state.recs == null) {
+        render();   // panel with loading skeletons
+        fetchRecs().then(() => {
+          if (state.showRecs && state.tab === "mylist" && !$("#modalRoot").classList.contains("open")) render();
+        });
+        return;
+      }
+      render();
+      return;
+    }
+    return;
+  }
+
+  const gateP = e.target.closest(".gate-p");
+  if (gateP) {
+    const p = gateP.dataset.profile;
+    if (state.editProfiles && p) { openProfileModal(p); return; }  // manage mode: tap to edit
+    closeGate();
+    if (p !== state.profile) switchProfile(p);
+    openSetupAfterGate();
+    return;
+  }
+
+  const tile = e.target.closest("[data-genre]");
+  if (tile) {
+    state.genre = {
+      id: tile.dataset.genre,
+      mt: tile.dataset.gmt,
+      name: tile.querySelector(".g-name")?.textContent || ""
+    };
+    state.pages = {};
+    render();
+    return;
+  }
+
+  const sim = e.target.closest(".sim-card");
+  if (sim) { openModal(sim.dataset.key); return; }
+
+  const card = e.target.closest(".card");
+  if (card) { openModal(card.dataset.key); return; }
+
+  const arrow = e.target.closest(".row-arrow");
+  if (arrow) {
+    const track = arrow.parentElement.querySelector(".row-track");
+    track.scrollBy({ left: +arrow.dataset.dir * track.clientWidth * 0.86, behavior: "smooth" });
+    return;
+  }
+
+  if (e.target.closest("[data-close]")) { closeModal(); return; }
+
+  const menu = e.target.closest("[data-menu]");
+  if (menu) {
+    e.preventDefault();
+    const kind = menu.dataset.menu;
+    if (kind === "settings") openSetup();
+    else if (kind === "gate") openGate();
+    else if (kind === "manage") { state.editProfiles = true; openGate(); }
+    else if (kind === "profile") switchProfile(menu.dataset.profile);
+    else toast("This is a demo — no real accounts here 🙂");
+    $("#profileMenu").classList.remove("show");
+    return;
+  }
+
+  const tab = e.target.closest("#tabs button");
+  if (tab) { goTab(tab.dataset.tab); return; }
+
+  // the NETFLIX logo is the home button
+  if (e.target.closest(".brand")) { goTab("home"); return; }
+
+  if (e.target.closest("#searchToggle")) {
+    const box = $("#searchBox");
+    box.classList.toggle("open");
+    if (box.classList.contains("open")) $("#searchInput").focus();
+    else { state.query = ""; $("#searchInput").value = ""; render(); }
+    return;
+  }
+  if (e.target.closest("#searchClear")) {
+    state.query = "";
+    $("#searchInput").value = "";
+    render();
+    return;
+  }
+  if (e.target.closest("#avatarBtn")) {
+    $("#profileMenu").classList.toggle("show");
+    return;
+  }
+  if (!e.target.closest("#profileMenu")) $("#profileMenu").classList.remove("show");
+});
+
+let searchTimer;
+$("#searchInput").addEventListener("input", e => {
+  state.query = e.target.value.trim();
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(render, 350);
+});
+
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") closeModal();
+  if (e.key === "/" && document.activeElement.tagName !== "INPUT" && document.activeElement.tagName !== "SELECT") {
+    e.preventDefault();
+    $("#searchBox").classList.add("open");
+    $("#searchInput").focus();
+  }
+  if (e.key === "Enter" && e.target.classList?.contains("card")) openModal(e.target.dataset.key);
+});
+
+window.addEventListener("scroll", () => {
+  $("#header").classList.toggle("scrolled", window.scrollY > 30);
+});
+
+/* ==================================================================
+   DAILY CATALOG REFRESH
+   The app fetches live data on every page load, but an iPhone
+   home-screen app can stay in memory for days. This watcher clears
+   every cache and re-renders as soon as the calendar day changes —
+   whether the app was reopened, left idle, or woken from background.
+================================================================== */
+let lastDay = store.get("nf_day", dayStamp());
+store.set("nf_day", lastDay);
+
+async function dailyRefresh(reason) {
+  const today = dayStamp();
+  if (today === lastDay) return false;
+  if (document.hidden) return true; // wait until the app is visible to re-render
+  lastDay = today;
+  store.set("nf_day", today);
+  store.set("nf_pd_day", "");          // force a fresh Internet Archive pull
+  memCache.clear();                    // force fresh TMDB rows
+  pdCache = null;
+  state.heroSeen = new Set();          // new hero rotation
+  state.pages = {};
+  await render();
+  stampUpdated();
+  toast("🔄 New day — catalog updated");
+  return true;
+}
+
+function stampUpdated() {
+  const el = $("#updStamp");
+  if (!el) return;
+  const d = new Date();
+  el.textContent = `Catalog refreshes automatically every day · Last updated: ` +
+    d.toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric", year: "numeric" });
+}
+
+// Check when the app wakes up (iPhone: returning to the app, screen unlock)
+document.addEventListener("visibilitychange", () => {
+  if (!document.hidden) dailyRefresh("background");
+});
+window.addEventListener("focus", () => dailyRefresh("focus"));
+// Belt-and-braces for apps left open across midnight
+setInterval(() => dailyRefresh("interval"), 30 * 60 * 1000);
+
+/* ==================================================================
+   BOOT
+================================================================== */
+async function boot() {
+  const tmdbMode = state.mode === "tmdb" && state.apiKey;
+  if (tmdbMode) {
+    try { await loadGenres(); }
+    catch (e) {
+      if (e.code === "auth") { state.mode = "demo"; store.set("nf_mode", "demo"); }
+    }
+  }
+  updateProfileUI();
+  openGate();          // waits under the splash, then takes over the screen
+  await render();
+  stampUpdated();
+  if (!store.get("nf_setup_seen", false))
+    setTimeout(() => { if (!state.gateOpen) openSetup(); }, 2200);
+}
+boot();
+
+const splash = $("#splash");
+const hideSplash = () => splash.classList.add("hide");
+splash.addEventListener("click", hideSplash);
+setTimeout(hideSplash, 1700);
+</script>
+</body>
+</html>
